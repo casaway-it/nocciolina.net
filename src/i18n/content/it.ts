@@ -355,7 +355,8 @@ export const content: Content = {
       lead: "Avete domande o volete maggiori informazioni? Siamo qui per aiutarvi. Che siate pronti a prenotare o vogliate solo saperne di più sulla casa, contattateci con calma. Non vediamo l'ora di ospitarvi e rendere la vacanza indimenticabile.",
     },
     mailboxAlt: "La cassetta della posta di Nocciolina all'ingresso",
-    labels: { phone: "Telefono", whatsapp: "WhatsApp", email: "Email", address: "Indirizzo" },
+    labels: { whatsapp: "WhatsApp", whatsappNote: "voce e messaggi", email: "Email", address: "Indirizzo" },
+    mapTitle: "Dove trovare Nocciolina",
     form: {
       sendMessage: "Inviate un messaggio",
       name: "Nome",

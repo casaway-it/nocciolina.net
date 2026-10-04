@@ -35,8 +35,16 @@ const structuredData = {
   description: t.siteDescription,
   url: new URL(localePath(lang, ""), siteUrl).href,
   image: new URL("/og.jpg", siteUrl).href,
-  telephone: siteConfig.phone,
+  telephone: siteConfig.whatsapp.display,
   email: siteConfig.email,
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      url: siteConfig.whatsapp.href,
+      availableLanguage: ["English", "Italian"],
+    },
+  ],
   address: {
     "@type": "PostalAddress",
     streetAddress: siteConfig.address.street,
@@ -279,7 +287,11 @@ const cardSources = [houseAndPatio, bedroom1, bar];
           <div class="reservation-facts reveal reveal-delay-2">
             <div>
               <p class="label-eyebrow">{h.contact.directLabel}</p>
-              <p>{h.contact.directPhonePrefix} {siteConfig.phone}<br />{h.contact.directWhatsappPrefix} <a href={siteConfig.whatsapp.href} rel="noreferrer">{siteConfig.whatsapp.display}</a></p>
+              <p>
+                {h.contact.directWhatsappPrefix} <a href={siteConfig.whatsapp.href} rel="noreferrer">{siteConfig.whatsapp.display}</a>
+                <br />
+                <span style="color: var(--muted-foreground); font-size: 0.85rem;">{t.contact.labels.whatsappNote}</span>
+              </p>
             </div>
             <div>
               <p class="label-eyebrow">{h.contact.emailLabel}</p>

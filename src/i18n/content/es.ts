@@ -331,7 +331,8 @@ export const content: Content = {
       lead: "¿Tienes preguntas o necesitas más información? Estamos aquí para ayudarte. Tanto si estás listo para reservar como si solo quieres saber más sobre la casa, escríbenos sin compromiso. Estamos deseando recibirte y hacer tus vacaciones inolvidables.",
     },
     mailboxAlt: "Buzón de Nocciolina en la entrada",
-    labels: { phone: "Teléfono", whatsapp: "WhatsApp", email: "Correo", address: "Dirección" },
+    labels: { whatsapp: "WhatsApp", whatsappNote: "llamadas y mensajes", email: "Correo", address: "Dirección" },
+    mapTitle: "Dónde encontrar Nocciolina",
     form: {
       sendMessage: "Enviar un mensaje",
       name: "Nombre",

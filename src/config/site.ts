@@ -13,10 +13,16 @@ export const siteConfig = {
     country: "Italia",
   },
   mapUrl: "https://maps.nocciolina.net",
-  phone: "+39 039 636 9500",
+  // Nocciolina has no plain phone line. +39 039 636-0500 is a WhatsApp Business
+  // number only — it carries both voice calls and messages via WhatsApp.
   whatsapp: {
     display: "+39 039 636-0500",
     href: "https://wa.me/message/R2AKZF4C64OZL1",
+  },
+  // Coordinates for the house, used by the embedded map.
+  geo: {
+    lat: 44.521228,
+    lng: 8.007689,
   },
   email: "info@casaway.it",
   nav: [

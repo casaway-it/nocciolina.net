@@ -331,7 +331,8 @@ export const content: Content = {
       lead: "Vragen of meer informatie nodig? We helpen graag. Of u nu klaar bent om te boeken of simpelweg meer over het huis wilt weten, voel u vrij ons te schrijven. We kijken ernaar uit u te ontvangen en uw vakantie onvergetelijk te maken.",
     },
     mailboxAlt: "Nocciolina-brievenbus bij de ingang",
-    labels: { phone: "Telefoon", whatsapp: "WhatsApp", email: "E-mail", address: "Adres" },
+    labels: { whatsapp: "WhatsApp", whatsappNote: "gesprekken en berichten", email: "E-mail", address: "Adres" },
+    mapTitle: "Zo vindt u Nocciolina",
     form: {
       sendMessage: "Stuur een bericht",
       name: "Naam",

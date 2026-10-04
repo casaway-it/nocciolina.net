@@ -12,6 +12,10 @@ type Props = { lang: Locale };
 const { lang } = Astro.props;
 const t = getContent(lang);
 const c = t.contact;
+
+const mapQuery = `${siteConfig.geo.lat},${siteConfig.geo.lng}`;
+const embedSrc = `https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&z=15&output=embed`;
+const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(mapQuery)}`;
 ---
 
 <BaseLayout lang={lang} pageKey="contact" title={c.title} description={c.description}>
@@ -31,25 +35,25 @@ const c = t.contact;
 
           <div class="reservation-facts" style="margin-top: 2rem;">
             <div>
-              <p class="label-eyebrow">{c.labels.phone}</p>
-              <p>{siteConfig.phone}</p>
-            </div>
-            <div>
               <p class="label-eyebrow">{c.labels.whatsapp}</p>
-              <p><a href={siteConfig.whatsapp.href} rel="noreferrer">{siteConfig.whatsapp.display}</a></p>
+              <p>
+                <a href={siteConfig.whatsapp.href} rel="noreferrer">{siteConfig.whatsapp.display}</a>
+                <br />
+                <span style="color: var(--muted-foreground); font-size: 0.85rem;">{c.labels.whatsappNote}</span>
+              </p>
             </div>
             <div>
               <p class="label-eyebrow">{c.labels.email}</p>
               <p><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
             </div>
-            <div>
+            <div style="grid-column: 1 / -1;">
               <p class="label-eyebrow">{c.labels.address}</p>
               <p>
                 {siteConfig.address.street}<br />
                 {siteConfig.address.postalCode} {siteConfig.address.locality}<br />
                 {siteConfig.address.region} - {siteConfig.address.country}
               </p>
-              <p style="margin-top: 0.5rem;"><a href={siteConfig.mapUrl} rel="noreferrer">{t.footer.openInMaps}</a></p>
+              <p style="margin-top: 0.5rem;"><a href={directionsHref} rel="noreferrer" target="_blank">{t.footer.openInMaps} <span aria-hidden="true">↗</span></a></p>
             </div>
           </div>
         </aside>
@@ -87,4 +91,17 @@ const c = t.contact;
       </div>
     </section>
   </main>
+
+  <section class="map-section" aria-label={c.mapTitle}>
+    <p class="label-eyebrow map-eyebrow">{c.mapTitle}</p>
+    <div class="map-frame">
+      <iframe
+        src={embedSrc}
+        title={c.mapTitle}
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </section>
 </BaseLayout>

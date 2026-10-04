@@ -1085,6 +1085,48 @@ textarea {
   }
 }
 
+/* Full-width Google Maps embed on the contact page */
+.map-section {
+  position: relative;
+  border-top: 1px solid var(--border);
+  background: rgb(32 26 21 / 0.42);
+  padding-block: clamp(2rem, 4vw, 3rem) 0;
+}
+
+.map-eyebrow {
+  max-width: var(--container);
+  margin: 0 auto 1rem;
+  padding-inline: var(--gutter);
+}
+
+.map-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  min-height: 360px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.map-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  filter: grayscale(0.25) contrast(0.95) brightness(0.92);
+}
+
+@media (max-width: 720px) {
+  .map-frame {
+    aspect-ratio: 4 / 3;
+    min-height: 320px;
+  }
+}
+
 /* YouTube embed */
 .video-wrapper {
   position: relative;

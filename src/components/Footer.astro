@@ -28,8 +28,11 @@ const rights = t.footer.rights.replace("{year}", String(year)).replace("{name}",
 
     <div class="footer-col">
       <p class="label-eyebrow">{t.footer.reachUs}</p>
-      <p>{t.footer.phoneLabel}: {siteConfig.phone}</p>
-      <p>{t.footer.whatsappLabel}: <a href={siteConfig.whatsapp.href} rel="noreferrer">{siteConfig.whatsapp.display}</a></p>
+      <p>
+        {t.footer.whatsappLabel}: <a href={siteConfig.whatsapp.href} rel="noreferrer">{siteConfig.whatsapp.display}</a>
+        <br />
+        <span style="color: var(--muted-foreground); font-size: 0.82rem;">{t.contact.labels.whatsappNote}</span>
+      </p>
       <p>{t.footer.emailLabel}: <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
     </div>
 

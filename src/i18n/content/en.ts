@@ -355,7 +355,8 @@ export const content: Content = {
       lead: "Have any questions or need more information? We're here to help. Whether you're ready to book your stay or want to learn more about the property, feel free to reach out. We look forward to hosting you and making your holiday unforgettable.",
     },
     mailboxAlt: "Nocciolina mailbox at the entrance",
-    labels: { phone: "Phone", whatsapp: "WhatsApp", email: "Email", address: "Address" },
+    labels: { whatsapp: "WhatsApp", whatsappNote: "voice and messages", email: "Email", address: "Address" },
+    mapTitle: "Where to find Nocciolina",
     form: {
       sendMessage: "Send a message",
       name: "Name",

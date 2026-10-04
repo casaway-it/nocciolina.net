@@ -210,11 +210,12 @@ export type Content = {
     };
     mailboxAlt: string;
     labels: {
-      phone: string;
       whatsapp: string;
+      whatsappNote: string;
       email: string;
       address: string;
     };
+    mapTitle: string;
     form: {
       sendMessage: string;
       name: string;
