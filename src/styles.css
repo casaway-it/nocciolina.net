@@ -1403,12 +1403,46 @@ textarea {
     grid-column: 1 / -1;
   }
 
+  /* On phones + small tablets, stack the hero: image on top, text block below.
+     The natural-aspect image is short and the overlay would otherwise overflow
+     upward behind the nav. */
+  .hero {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero .overlay {
+    display: none;
+  }
+
   .hero-content {
-    padding-top: 6rem;
+    position: static;
+    display: block;
+    padding: clamp(1.5rem, 5vw, 2.5rem) var(--gutter) clamp(2.5rem, 7vw, 3.5rem);
+    pointer-events: auto;
+    background: var(--background);
+  }
+
+  .hero-grid {
+    display: block;
+  }
+
+  .hero-heading,
+  .hero-copy {
+    grid-column: auto;
+    max-width: none;
+  }
+
+  .hero-title {
+    margin-top: 0.75rem;
+    text-shadow: none;
+    font-size: clamp(2.1rem, 8vw, 3rem);
   }
 
   .hero-copy {
-    max-width: 34rem;
+    margin-top: 1.5rem;
+    color: rgb(240 231 216 / 0.82);
+    text-shadow: none;
   }
 
   .concept-section .text-block {
