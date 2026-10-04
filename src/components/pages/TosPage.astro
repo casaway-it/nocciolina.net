@@ -2,7 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../Nav.astro";
 import { getContent } from "../../i18n/content";
-import { localePath, type Locale } from "../../i18n/locales";
+import { localePath, assetPath, type Locale } from "../../i18n/locales";
 
 type Props = { lang: Locale };
 const { lang } = Astro.props;
@@ -23,7 +23,7 @@ const x = t.tos;
     <section class="container section" style="padding-block-start: 0;">
       <article class="prose">
         <p>{x.pdfLineBefore}</p>
-        <p><a href="/terms.pdf">{x.pdfLink}</a>{x.pdfLineAfter}</p>
+        <p><a href={assetPath("/terms.pdf")}>{x.pdfLink}</a>{x.pdfLineAfter}</p>
 
         <h2>{x.directHeading}</h2>
         <p>{x.directBody.replace("contact page", "")}<a href={localePath(lang, "contact")}>{t.nav.contact}</a>.</p>

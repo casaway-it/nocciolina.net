@@ -5,7 +5,7 @@ import Lightbox from "../components/Lightbox.astro";
 import BottomGallery from "../components/BottomGallery.astro";
 import Footer from "../components/Footer.astro";
 import { getContent } from "../i18n/content";
-import { localeMeta, type Locale } from "../i18n/locales";
+import { localeMeta, assetPath, type Locale } from "../i18n/locales";
 import { siteConfig } from "../config/site";
 
 type Props = {
@@ -42,24 +42,26 @@ const htmlLang = localeMeta[lang].htmlLang;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#17130f" />
-    <link rel="icon" type="image/png" href="/logo.png" />
-    <script is:inline>
+    <link rel="icon" type="image/png" href={assetPath("/logo.png")} />
+    <script is:inline define:vars={{ baseUrl: import.meta.env.BASE_URL }}>
       (() => {
         try {
           const KEY = "noccVisited";
           if (localStorage.getItem(KEY)) return;
           localStorage.setItem(KEY, "1");
 
+          const base = (baseUrl || "/").replace(/\/$/, "");
+          const localeRe = new RegExp("^" + base.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\$&") + "/(it|de|fr|nl|es)(?=/|$)");
           const supported = ["en", "it", "de", "fr", "nl", "es"];
-          const match = /^\/(it|de|fr|nl|es)(?=\/|$)/.exec(location.pathname);
+          const match = localeRe.exec(location.pathname);
           const currentLocale = match ? match[1] : "en";
 
           const nav = (navigator.language || "en").slice(0, 2).toLowerCase();
           const target = supported.indexOf(nav) !== -1 ? nav : "en";
           if (target === currentLocale) return;
 
-          const rest = location.pathname.replace(/^\/(it|de|fr|nl|es)(?=\/|$)/, "");
-          const newPath = target === "en" ? (rest || "/") : "/" + target + rest;
+          const rest = location.pathname.replace(localeRe, base);
+          const newPath = target === "en" ? (rest || base + "/") : base + "/" + target + rest.slice(base.length);
           location.replace(newPath + location.search + location.hash);
         } catch (e) { /* ignore */ }
       })();

@@ -36,6 +36,11 @@ jobs:
         run: npm run check
 
       - name: Build
+        env:
+          # PREVIEW=1 builds with base=/nocciolina.net and site=casaway-it.github.io
+          # so the site is served from https://casaway-it.github.io/nocciolina.net/
+          # (temporary — unset once DNS is pointed at Pages and public/CNAME is restored).
+          PREVIEW: "1"
         run: npm run build
 
       - name: Upload artifact
