@@ -1,0 +1,32 @@
+{
+  "name": "nocciolina-net",
+  "version": "1.0.0",
+  "description": "Nocciolina — a stone house in the hazelnut groves of Alta Langa. Astro static site.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "@fontsource/cormorant-garamond": "^5.2.11",
+    "@fontsource/source-sans-3": "^5.2.9",
+    "astro": "^7.1.0",
+    "sharp": "^0.35.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "prettier": "^3.8.4",
+    "typescript": "^6.0.3"
+  },
+  "overrides": {
+    "yaml": "^2.9.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

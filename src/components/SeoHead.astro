@@ -1,0 +1,65 @@
+---
+import { getContent } from "../i18n/content";
+import { localeMeta, localePath, locales, defaultLocale, type Locale } from "../i18n/locales";
+
+type Props = {
+  lang: Locale;
+  pageKey: string; // "" for home, "property", "story", etc.
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: "website" | "article";
+  structuredData?: Record<string, unknown>;
+};
+
+const {
+  lang,
+  pageKey,
+  title,
+  description,
+  image,
+  type = "website",
+  structuredData,
+} = Astro.props;
+
+const t = getContent(lang);
+const resolvedTitle = title ?? t.siteTitle;
+const resolvedDescription = description ?? t.siteDescription;
+const resolvedImage = image ?? "/og.jpg";
+const meta = localeMeta[lang];
+
+const siteUrl = Astro.site ?? new URL("http://localhost:4321");
+const canonical = new URL(localePath(lang, pageKey), siteUrl);
+const absoluteImage = new URL(resolvedImage, siteUrl);
+const pageTitle = resolvedTitle === t.siteTitle ? resolvedTitle : `${resolvedTitle} | ${t.siteName}`;
+
+const alternates = locales.map((l) => ({
+  hreflang: localeMeta[l].htmlLang,
+  href: new URL(localePath(l, pageKey), siteUrl).href,
+}));
+const xDefaultHref = new URL(localePath(defaultLocale, pageKey), siteUrl).href;
+---
+
+<title>{pageTitle}</title>
+<meta name="description" content={resolvedDescription} />
+<link rel="canonical" href={canonical.href} />
+<meta property="og:locale" content={meta.ogLocale} />
+<meta property="og:type" content={type} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={resolvedDescription} />
+<meta property="og:url" content={canonical.href} />
+<meta property="og:site_name" content={t.siteName} />
+<meta property="og:image" content={absoluteImage.href} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={resolvedDescription} />
+<meta name="twitter:image" content={absoluteImage.href} />
+
+{alternates.map((alt) => (
+  <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+))}
+<link rel="alternate" hreflang="x-default" href={xDefaultHref} />
+
+{structuredData && (
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+)}

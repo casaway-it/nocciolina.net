@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../Nav.astro";
+import GalleryImage from "../GalleryImage.astro";
+import { getContent } from "../../i18n/content";
+import type { Locale } from "../../i18n/locales";
+import { siteConfig } from "../../config/site";
+
+import mailbox from "../../assets/mailbox.jpg";
+
+type Props = { lang: Locale };
+const { lang } = Astro.props;
+const t = getContent(lang);
+const c = t.contact;
+---
+
+<BaseLayout lang={lang} pageKey="contact" title={c.title} description={c.description}>
+  <Nav lang={lang} pageKey="contact" />
+
+  <main id="main">
+    <header class="page-head">
+      <p class="label-eyebrow">{c.pageHead.eyebrow}</p>
+      <h1>{c.pageHead.title}</h1>
+      <p class="lead">{c.pageHead.lead}</p>
+    </header>
+
+    <section class="container section" style="padding-block-start: 0;">
+      <div class="section-grid">
+        <aside class="menu-aside">
+          <GalleryImage src={mailbox} alt={c.mailboxAlt} gallery="contact" loading="eager" />
+
+          <div class="reservation-facts" style="margin-top: 2rem;">
+            <div>
+              <p class="label-eyebrow">{c.labels.phone}</p>
+              <p>{siteConfig.phone}</p>
+            </div>
+            <div>
+              <p class="label-eyebrow">{c.labels.whatsapp}</p>
+              <p><a href={siteConfig.whatsapp.href} rel="noreferrer">{siteConfig.whatsapp.display}</a></p>
+            </div>
+            <div>
+              <p class="label-eyebrow">{c.labels.email}</p>
+              <p><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
+            </div>
+            <div>
+              <p class="label-eyebrow">{c.labels.address}</p>
+              <p>
+                {siteConfig.address.street}<br />
+                {siteConfig.address.postalCode} {siteConfig.address.locality}<br />
+                {siteConfig.address.region} - {siteConfig.address.country}
+              </p>
+              <p style="margin-top: 0.5rem;"><a href={siteConfig.mapUrl} rel="noreferrer">{t.footer.openInMaps}</a></p>
+            </div>
+          </div>
+        </aside>
+
+        <form class="reservation-form" action={siteConfig.contact.formAction} method={siteConfig.contact.method} enctype="text/plain">
+          <p class="label-eyebrow">{c.form.sendMessage}</p>
+          <div class="form-grid">
+            <div class="form-field--full">
+              <label class="label-eyebrow" for="name">{c.form.name} <span aria-hidden="true">*</span></label>
+              <input id="name" name="name" autocomplete="name" required />
+            </div>
+            <div>
+              <label class="label-eyebrow" for="email">{c.form.email} <span aria-hidden="true">*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div>
+              <label class="label-eyebrow" for="phone">{c.form.phone}</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+            <div>
+              <label class="label-eyebrow" for="arrival">{c.form.arrival}</label>
+              <input id="arrival" name="arrival" type="date" />
+            </div>
+            <div>
+              <label class="label-eyebrow" for="departure">{c.form.departure}</label>
+              <input id="departure" name="departure" type="date" />
+            </div>
+            <div class="form-field--full">
+              <label class="label-eyebrow" for="message">{c.form.message}</label>
+              <textarea id="message" name="message" rows="5" required placeholder={c.form.messagePlaceholder}></textarea>
+            </div>
+          </div>
+          <button class="form-button" type="submit">{c.form.send} <span aria-hidden="true">-&gt;</span></button>
+        </form>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

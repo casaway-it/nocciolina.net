@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../Nav.astro";
+import GalleryImage from "../GalleryImage.astro";
+import { getContent } from "../../i18n/content";
+import type { Locale } from "../../i18n/locales";
+import { poiCategories } from "../../i18n/pois";
+
+import local02 from "../../assets/local-02.jpg";
+
+type Props = { lang: Locale };
+const { lang } = Astro.props;
+const t = getContent(lang);
+const l = t.langhe;
+
+const counts = poiCategories.map((c) => ({ id: c.id, title: l.categoryTitles[c.id] ?? c.id, n: c.pois.length }));
+---
+
+<BaseLayout lang={lang} pageKey="langhe" title={l.title} description={l.description}>
+  <Nav lang={lang} pageKey="langhe" />
+
+  <main id="main">
+    <header class="page-head">
+      <p class="label-eyebrow">{l.pageHead.eyebrow}</p>
+      <h1>{l.pageHead.title}</h1>
+      <p class="lead">{l.pageHead.lead}</p>
+    </header>
+
+    <section class="container section" style="padding-block-start: 0;">
+      <div style="margin-bottom: 3rem;">
+        <GalleryImage src={local02} alt={l.heroAlt} gallery="langhe" />
+      </div>
+
+      <nav class="poi-toc" aria-label={l.tocLabel}>
+        <ul>
+          {counts.map((c) => (
+            <li><a href={`#${c.id}`}>{c.title} <span class="poi-count">{c.n}</span></a></li>
+          ))}
+        </ul>
+      </nav>
+
+      {poiCategories.map((cat) => (
+        <section id={cat.id} class="poi-section">
+          <h2 class="poi-heading display">{l.categoryTitles[cat.id] ?? cat.id}</h2>
+          <ol class="poi-list">
+            {cat.pois.map((poi) => (
+              <li class="poi">
+                <a class="poi-name" href={poi.url} target="_blank" rel="noreferrer noopener">
+                  {poi.name}
+                  <span class="poi-link-icon" aria-hidden="true">↗</span>
+                </a>
+                <p class="poi-note">{l.poiNotes[poi.id] ?? ""}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ))}
+
+      <p style="margin-top: 3rem; color: var(--muted-foreground);">
+        {l.syncBefore}<a href="https://casaway.it/recommendations/points-of-interest/langhe/" rel="noreferrer">{l.syncLinkText}</a>{l.syncAfter}
+      </p>
+    </section>
+  </main>
+</BaseLayout>

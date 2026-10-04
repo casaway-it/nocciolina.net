@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../Nav.astro";
+import { getContent } from "../../i18n/content";
+import { localePath, type Locale } from "../../i18n/locales";
+
+type Props = { lang: Locale };
+const { lang } = Astro.props;
+const t = getContent(lang);
+
+const copy: Record<Locale, { title: string; body: string; cta: string }> = {
+  en: { title: "Page not found", body: "This page doesn't exist (any more). From here you can head back to the home page or write to us.", cta: "Back to Nocciolina" },
+  it: { title: "Pagina non trovata", body: "Questa pagina non esiste (più). Da qui puoi tornare alla home o scriverci.", cta: "Torna a Nocciolina" },
+  de: { title: "Seite nicht gefunden", body: "Diese Seite existiert nicht (mehr). Von hier aus geht es zurück zur Startseite oder zum Kontakt.", cta: "Zurück zu Nocciolina" },
+  fr: { title: "Page introuvable", body: "Cette page n'existe pas (plus). D'ici vous pouvez revenir à l'accueil ou nous écrire.", cta: "Retour à Nocciolina" },
+  nl: { title: "Pagina niet gevonden", body: "Deze pagina bestaat (niet meer). Vanaf hier kunt u terug naar de home of ons schrijven.", cta: "Terug naar Nocciolina" },
+  es: { title: "Página no encontrada", body: "Esta página no existe (ya). Desde aquí puedes volver a la home o escribirnos.", cta: "Volver a Nocciolina" },
+};
+
+const c = copy[lang];
+---
+
+<BaseLayout lang={lang} pageKey="" title={`404 - ${c.title}`} description={c.body} hideBottomGallery>
+  <Nav lang={lang} pageKey="" />
+  <main id="main">
+    <section class="container section" style="padding-top: 10rem; min-height: 60svh;">
+      <p class="label-eyebrow">404</p>
+      <h1 class="display" style="font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1; margin: 0.5rem 0 1.5rem;">{c.title}</h1>
+      <p style="max-width: 42rem; color: rgb(240 231 216 / 0.84); line-height: 1.65;">{c.body}</p>
+      <p style="margin-top: 2rem;">
+        <a class="button-link" href={localePath(lang, "")}>{c.cta} <span aria-hidden="true">-&gt;</span></a>
+      </p>
+    </section>
+  </main>
+</BaseLayout>

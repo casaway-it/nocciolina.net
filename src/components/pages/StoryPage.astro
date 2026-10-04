@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../Nav.astro";
+import GalleryImage from "../GalleryImage.astro";
+import { getContent } from "../../i18n/content";
+import type { Locale } from "../../i18n/locales";
+
+import story01 from "../../assets/story-01.jpg";
+import story02 from "../../assets/story-02.jpg";
+import story03 from "../../assets/story-03.jpg";
+import story04 from "../../assets/story-04.jpg";
+import story05 from "../../assets/story-05.jpg";
+import story06 from "../../assets/story-06.jpg";
+import story07 from "../../assets/story-07.jpg";
+import story08 from "../../assets/story-08.jpg";
+import story09 from "../../assets/story-09.jpg";
+import story10 from "../../assets/story-10.jpg";
+import story11 from "../../assets/story-11.jpg";
+import story12 from "../../assets/story-12.jpg";
+import story13 from "../../assets/story-13.jpg";
+import story14 from "../../assets/story-14.jpg";
+import story15 from "../../assets/story-15.jpg";
+
+type Props = { lang: Locale };
+const { lang } = Astro.props;
+const t = getContent(lang);
+const s = t.story;
+---
+
+<BaseLayout lang={lang} pageKey="story" title={s.title} description={s.description}>
+  <Nav lang={lang} pageKey="story" />
+
+  <main id="main">
+    <header class="page-head">
+      <p class="label-eyebrow">{s.pageHead.eyebrow}</p>
+      <h1>{s.pageHead.title}</h1>
+      <p class="lead">{s.pageHead.lead}</p>
+    </header>
+
+    <section class="container section" style="padding-block-start: 0;">
+      <div style="margin-bottom: 3rem;">
+        <GalleryImage src={story01} alt={s.heroAlt} gallery="story" loading="eager" />
+      </div>
+
+      <article class="prose">
+        <p>{s.intro}</p>
+
+        <h2>{s.findingHeading}</h2>
+        <p>{s.findingBody}</p>
+
+        <div class="story-pair">
+          <GalleryImage src={story02} alt={s.alts.pair1[0]} gallery="story" square />
+          <GalleryImage src={story03} alt={s.alts.pair1[1]} gallery="story" square />
+        </div>
+
+        <h2>{s.renovatingHeading}</h2>
+        <p>{s.renovatingBody}</p>
+
+        <div class="story-grid">
+          <GalleryImage src={story04} alt={s.alts.grid1[0]} gallery="story" square />
+          <GalleryImage src={story05} alt={s.alts.grid1[1]} gallery="story" square />
+          <GalleryImage src={story06} alt={s.alts.grid1[2]} gallery="story" square />
+          <GalleryImage src={story07} alt={s.alts.grid1[3]} gallery="story" square />
+          <GalleryImage src={story08} alt={s.alts.grid1[4]} gallery="story" square />
+          <GalleryImage src={story09} alt={s.alts.grid1[5]} gallery="story" square />
+        </div>
+
+        <h2>{s.outdoorsHeading}</h2>
+        <p>{s.outdoorsBody}</p>
+
+        <div class="story-grid">
+          <GalleryImage src={story10} alt={s.alts.grid2[0]} gallery="story" square />
+          <GalleryImage src={story11} alt={s.alts.grid2[1]} gallery="story" square />
+          <GalleryImage src={story12} alt={s.alts.grid2[2]} gallery="story" square />
+          <GalleryImage src={story13} alt={s.alts.grid2[3]} gallery="story" square />
+        </div>
+
+        <h2>{s.goodbyeHeading}</h2>
+        <p>{s.goodbyeBody}</p>
+
+        <div class="story-pair">
+          <GalleryImage src={story14} alt={s.alts.pair2[0]} gallery="story" square />
+          <GalleryImage src={story15} alt={s.alts.pair2[1]} gallery="story" square />
+        </div>
+
+        <p>{s.sayHelloBefore}<a href="mailto:info@casaway.it">info@casaway.it</a>.</p>
+      </article>
+    </section>
+  </main>
+</BaseLayout>

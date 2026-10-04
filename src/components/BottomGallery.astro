@@ -1,0 +1,34 @@
+---
+import GalleryImage from "./GalleryImage.astro";
+import { getContent } from "../i18n/content";
+import type { Locale } from "../i18n/locales";
+
+import local01 from "../assets/local-01.jpg";
+import local02 from "../assets/local-02.jpg";
+import local03 from "../assets/local-03.jpg";
+import local04 from "../assets/local-04.jpg";
+import local05 from "../assets/local-05.jpg";
+import local06 from "../assets/local-06.jpg";
+import local07 from "../assets/local-07.jpg";
+import local08 from "../assets/local-08.jpg";
+import local09 from "../assets/local-09.jpg";
+import local10 from "../assets/local-10.jpg";
+
+type Props = { lang: Locale };
+const { lang } = Astro.props;
+const t = getContent(lang);
+
+const sources = [local01, local02, local03, local04, local05, local06, local07, local08, local09, local10];
+const items = sources.map((src, i) => ({ src, alt: t.bottomGallery.alts[i] ?? "" }));
+---
+
+<section class="bottom-gallery" aria-label={t.bottomGallery.title}>
+  <div class="container">
+    <p class="label-eyebrow bottom-gallery-eyebrow">{t.bottomGallery.title}</p>
+    <div class="bottom-gallery-grid">
+      {items.map((item) => (
+        <GalleryImage src={item.src} alt={item.alt} gallery="local" square />
+      ))}
+    </div>
+  </div>
+</section>

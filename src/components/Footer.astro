@@ -1,0 +1,50 @@
+---
+import { getContent } from "../i18n/content";
+import { localePath, type Locale } from "../i18n/locales";
+import { siteConfig } from "../config/site";
+
+type Props = { lang: Locale };
+const { lang } = Astro.props;
+const t = getContent(lang);
+
+const year = new Date().getFullYear();
+const rights = t.footer.rights.replace("{year}", String(year)).replace("{name}", siteConfig.name);
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <strong>{siteConfig.name.toUpperCase()}</strong>
+      <p>{t.footer.tagline}</p>
+    </div>
+
+    <div class="footer-col">
+      <p class="label-eyebrow">{t.footer.visit}</p>
+      <p>{siteConfig.address.street}</p>
+      <p>{siteConfig.address.postalCode} {siteConfig.address.locality}</p>
+      <p>{siteConfig.address.region} - {siteConfig.address.country}</p>
+      <p><a href={siteConfig.mapUrl} rel="noreferrer">{t.footer.openInMaps}</a></p>
+    </div>
+
+    <div class="footer-col">
+      <p class="label-eyebrow">{t.footer.reachUs}</p>
+      <p>{t.footer.phoneLabel}: {siteConfig.phone}</p>
+      <p>{t.footer.whatsappLabel}: <a href={siteConfig.whatsapp.href} rel="noreferrer">{siteConfig.whatsapp.display}</a></p>
+      <p>{t.footer.emailLabel}: <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
+    </div>
+
+    <div class="footer-col">
+      <p class="label-eyebrow">{t.footer.explore}</p>
+      <ul>
+        <li><a href={localePath(lang, "guide")}>{t.footer.houseGuide}</a></li>
+        <li><a href={localePath(lang, "tos")}>{t.footer.terms}</a></li>
+        <li><a href="https://www.smoobu.com/privacy-policy/" rel="noreferrer">{t.footer.privacy}</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-bottom">
+      <p>{rights} <a href="https://casaway.it" rel="noreferrer">casaway.it</a>.</p>
+      <p><span class="ember-dot" aria-hidden="true"></span> {t.footer.signal}</p>
+    </div>
+  </div>
+</footer>

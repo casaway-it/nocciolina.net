@@ -1,0 +1,331 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../Nav.astro";
+import GalleryImage from "../GalleryImage.astro";
+import YouTubeEmbed from "../YouTubeEmbed.astro";
+import { getContent } from "../../i18n/content";
+import { localePath, type Locale } from "../../i18n/locales";
+import { siteConfig } from "../../config/site";
+
+import heroPrimary from "../../assets/cover.png";
+import houseAndPatio from "../../assets/house-and-patio.jpg";
+import houseFromStreet from "../../assets/house-from-street.jpg";
+import patioSunset from "../../assets/patio.jpg";
+import livingRoom2 from "../../assets/living-room-2.jpg";
+import bedroom1 from "../../assets/bedroom-1.jpg";
+import bar from "../../assets/bar.jpg";
+import bedroom2 from "../../assets/bedroom-2.jpg";
+import deck1 from "../../assets/deck-1.jpg";
+import gardenView from "../../assets/garden-view.jpg";
+import terrace from "../../assets/terrace.jpg";
+import terrace2 from "../../assets/terrace-2.jpg";
+
+type Props = { lang: Locale };
+const { lang } = Astro.props;
+const t = getContent(lang);
+const h = t.home;
+
+const siteUrl = Astro.site ?? new URL("http://localhost:4321");
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  name: t.siteName,
+  description: t.siteDescription,
+  url: new URL(localePath(lang, ""), siteUrl).href,
+  image: new URL("/og.jpg", siteUrl).href,
+  telephone: siteConfig.phone,
+  email: siteConfig.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: siteConfig.address.street,
+    addressLocality: siteConfig.address.locality,
+    addressRegion: siteConfig.address.region,
+    postalCode: siteConfig.address.postalCode,
+    addressCountry: "IT",
+  },
+  checkinTime: siteConfig.stay.checkIn,
+  checkoutTime: siteConfig.stay.checkOut,
+  numberOfRooms: siteConfig.stay.bedrooms,
+  petsAllowed: true,
+};
+
+const cardSources = [houseAndPatio, bedroom1, bar];
+---
+
+<BaseLayout lang={lang} pageKey="" structuredData={structuredData}>
+  <Nav lang={lang} pageKey="" />
+
+  <main id="main">
+    <section id="top" class="hero" aria-labelledby="hero-title">
+      <div class="hero-media">
+        <Image src={heroPrimary} alt={h.hero.alt} width={1672} height={941} quality={92} format="webp" loading="eager" decoding="sync" />
+      </div>
+      <div class="overlay" style="background: var(--grad-veil);"></div>
+      <div class="hero-content">
+        <div class="hero-grid">
+          <div class="hero-heading">
+            <p class="label-eyebrow reveal">{h.hero.eyebrow}</p>
+            <h1 id="hero-title" class="hero-title display reveal reveal-delay-1">
+              {h.hero.title[0]}<br />
+              <span class="display-italic" style="color: var(--ember);">{h.hero.title[1]}</span><br />
+              {h.hero.title[2]}
+            </h1>
+          </div>
+          <div class="hero-copy reveal reveal-delay-2">
+            <p>{h.hero.body}</p>
+            <div class="hero-actions">
+              <a class="button-link" href={localePath(lang, "contact")}>{h.hero.action} <span aria-hidden="true">-&gt;</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="marquee" aria-label={t.siteName}>
+      <div class="marquee-track">
+        {[...h.marquee, ...h.marquee].map((item) => (
+          <span>{item}<b aria-hidden="true">*</b></span>
+        ))}
+      </div>
+    </section>
+
+    <section id="welcome" class="section concept-section">
+      <div class="container section-grid">
+        <div class="section-kicker"><p class="label-eyebrow reveal">{h.welcome.eyebrow}</p></div>
+        <h2 class="section-heading display reveal">
+          {h.welcome.heading[0]}<br />
+          <span class="display-italic" style="color: var(--ember);">{h.welcome.heading[1]}</span><br />
+          {h.welcome.heading[2]}
+        </h2>
+
+        <div class="text-block reveal reveal-delay-1">
+          {h.welcome.body.map((p) => <p>{p}</p>)}
+        </div>
+
+        <figure class="figure-detail reveal">
+          <GalleryImage src={livingRoom2} alt={h.welcome.asideAlt} gallery="home" />
+          <figcaption class="label-eyebrow" style="margin-top: 1rem;">{h.welcome.caption}</figcaption>
+        </figure>
+
+        <div class="fire-block reveal">
+          <div class="fire-media">
+            <GalleryImage src={patioSunset} alt={h.welcome.fireAlt} gallery="home" />
+          </div>
+          <div class="quote-block">
+            <blockquote>"{h.welcome.quote}"</blockquote>
+            <p class="label-eyebrow" style="margin-top: 1.5rem;">- {h.welcome.quoteByline}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="video" class="section">
+      <div class="container">
+        <p class="label-eyebrow" style="margin-bottom: 1rem;">{h.video.eyebrow}</p>
+        <YouTubeEmbed id="ST3XnCsSjEw" title={h.video.title} />
+      </div>
+    </section>
+
+    <section id="features" class="section surface-section" aria-label={h.stays.caption}>
+      <div class="container">
+        <div class="feature-trio">
+          {h.cards.map((card, i) => (
+            <article class="trio-card reveal">
+              <GalleryImage src={cardSources[i]} alt={card.alt} gallery="home" />
+              <h3>{card.title}</h3>
+              <p>{card.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="house" class="section">
+      <div class="container section-grid">
+        <div class="section-kicker"><p class="label-eyebrow reveal">{h.stays.eyebrow}</p></div>
+        <h2 class="section-heading display reveal">
+          {h.stays.heading[0]}<br />
+          <span class="display-italic" style="color: var(--ember);">{h.stays.heading[1]}</span><br />
+          {h.stays.heading[2]}
+        </h2>
+
+        <aside class="menu-aside reveal" aria-label={h.stays.caption}>
+          <GalleryImage src={bedroom2} alt={h.stays.asideAlt} gallery="home" />
+          <p class="label-eyebrow" style="margin-top: 1rem;">{h.stays.caption}</p>
+          <div class="hairline" style="margin-block: 1.5rem;"></div>
+          <p style="color: var(--muted-foreground); line-height: 1.6;">{h.stays.note}</p>
+          <p style="margin-top: 1.25rem;">
+            <a class="button-link button-link--outline" href={localePath(lang, "property")}>{h.stays.asideCta} <span aria-hidden="true">-&gt;</span></a>
+          </p>
+        </aside>
+
+        <ol class="course-list">
+          {h.stays.rooms.map((room) => (
+            <li class="course reveal">
+              <span class="course-number">{room.number}</span>
+              <h3>{room.title} {room.accent && <span class="display-italic">{room.accent}</span>}</h3>
+              <p>{room.body}</p>
+              <span class="pairing">{room.pairing}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <div class="wide-break">
+      <GalleryImage src={deck1} alt={h.deckAlt} gallery="home" />
+    </div>
+
+    <section id="land" class="section surface-section">
+      <div class="container section-grid">
+        <div class="section-kicker"><p class="label-eyebrow reveal">{h.nature.eyebrow}</p></div>
+        <h2 class="section-heading display reveal">
+          {h.nature.heading[0]}<br />
+          <span class="display-italic" style="color: var(--ember);">{h.nature.heading[1]}</span><br />
+          {h.nature.heading[2]}
+        </h2>
+
+        <div class="text-block reveal reveal-delay-1">
+          {h.nature.body.map((p) => <p>{p}</p>)}
+        </div>
+
+        <figure class="figure-detail reveal">
+          <GalleryImage src={gardenView} alt={h.nature.figureAlt} gallery="home" />
+          <figcaption class="label-eyebrow" style="margin-top: 1rem;">{h.nature.figureCaption}</figcaption>
+        </figure>
+
+        <div class="feature-grid" style="grid-column: 1 / -1; margin-top: 2rem;">
+          {h.nature.highlights.map((f) => (
+            <section>
+              <p class="label-eyebrow">{f.title}</p>
+              <p>{f.body}</p>
+            </section>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="gateway" class="section">
+      <div class="container section-grid">
+        <div class="section-kicker"><p class="label-eyebrow reveal">{h.gateway.eyebrow}</p></div>
+        <h2 class="section-heading display reveal">
+          {h.gateway.heading[0]}<br />
+          <span class="display-italic" style="color: var(--ember);">{h.gateway.heading[1]}</span><br />
+          {h.gateway.heading[2]}
+        </h2>
+
+        <div class="text-block reveal reveal-delay-1">
+          {h.gateway.body.map((p) => <p>{p}</p>)}
+          <p style="margin-top: 1.5rem;">
+            <a class="button-link" href={localePath(lang, "contact")}>{h.gateway.cta} <span aria-hidden="true">-&gt;</span></a>
+          </p>
+        </div>
+
+        <figure class="figure-detail reveal">
+          <GalleryImage src={terrace} alt={h.gateway.figureAlt} gallery="home" />
+          <figcaption class="label-eyebrow" style="margin-top: 1rem;">{h.gateway.figureCaption}</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="story" class="surface-section">
+      <div class="interior-hero">
+        <Image src={houseFromStreet} alt={h.story.interiorAlt} width={2560} height={1920} loading="lazy" />
+        <div class="overlay" style="background: var(--grad-veil);"></div>
+        <div class="interior-caption">
+          <p class="label-eyebrow">{h.story.eyebrow}</p>
+          <h2 class="display">
+            {h.story.headingLine1} <span class="display-italic" style="color: var(--ember);">{h.story.headingAccent}</span>
+          </h2>
+        </div>
+      </div>
+
+      <div class="container section">
+        <div class="section-grid">
+          <div class="chef-bio reveal" style="grid-column: 3 / span 8;">
+            <p class="chef-quote">"{h.story.quote}"</p>
+            <div class="hairline" style="margin-block: 2.5rem;"></div>
+            <ul class="timeline">
+              {h.story.timeline.map((row) => (
+                <li>
+                  <time datetime={row.year}>{row.year}</time>
+                  <span>{row.text}</span>
+                </li>
+              ))}
+            </ul>
+            <p style="margin-top: 2rem;">
+              <a class="button-link button-link--outline" href={localePath(lang, "story")}>{h.story.cta} <span aria-hidden="true">-&gt;</span></a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reserve" class="section reservation">
+      <Image class="reservation-bg" src={terrace2} alt="" width={2560} height={1920} loading="lazy" aria-hidden="true" />
+      <div class="overlay" style="background: var(--grad-vignette);"></div>
+
+      <div class="container section-grid">
+        <div class="reservation-copy">
+          <p class="label-eyebrow reveal">{h.contact.eyebrow}</p>
+          <h2 class="display reveal">
+            {h.contact.heading[0]}<br />
+            <span class="display-italic" style="color: var(--ember);">{h.contact.heading[1]}</span><br />
+            {h.contact.heading[2]}
+          </h2>
+          <p class="reveal reveal-delay-1">{h.contact.body}</p>
+          <div class="reservation-facts reveal reveal-delay-2">
+            <div>
+              <p class="label-eyebrow">{h.contact.directLabel}</p>
+              <p>{h.contact.directPhonePrefix} {siteConfig.phone}<br />{h.contact.directWhatsappPrefix} <a href={siteConfig.whatsapp.href} rel="noreferrer">{siteConfig.whatsapp.display}</a></p>
+            </div>
+            <div>
+              <p class="label-eyebrow">{h.contact.emailLabel}</p>
+              <p><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
+            </div>
+          </div>
+        </div>
+
+        <form class="reservation-form reveal" action={siteConfig.contact.formAction} method={siteConfig.contact.method} enctype="text/plain">
+          <p class="label-eyebrow">{h.contact.formTitle}</p>
+          <div class="form-grid">
+            <div class="form-field--full">
+              <label class="label-eyebrow" for="name">{h.contact.form.fullName} <span aria-hidden="true">*</span></label>
+              <input id="name" name="name" autocomplete="name" required />
+            </div>
+            <div>
+              <label class="label-eyebrow" for="email">{h.contact.form.email} <span aria-hidden="true">*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div>
+              <label class="label-eyebrow" for="phone">{h.contact.form.phone}</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+            <div>
+              <label class="label-eyebrow" for="arrival">{h.contact.form.arrival}</label>
+              <input id="arrival" name="arrival" type="date" />
+            </div>
+            <div>
+              <label class="label-eyebrow" for="departure">{h.contact.form.departure}</label>
+              <input id="departure" name="departure" type="date" />
+            </div>
+            <div class="form-field--full">
+              <label class="label-eyebrow" for="guests">{h.contact.form.guests}</label>
+              <select id="guests" name="guests">
+                {["1", "2", "3", "4", "5", "6"].map((o) => <option value={o}>{o}</option>)}
+              </select>
+            </div>
+            <div class="form-field--full">
+              <label class="label-eyebrow" for="note">{h.contact.form.message}</label>
+              <textarea id="note" name="note" rows="3" placeholder={h.contact.form.messagePlaceholder}></textarea>
+            </div>
+          </div>
+          <button class="form-button" type="submit">{h.contact.form.send} <span aria-hidden="true">-&gt;</span></button>
+          <p style="color: var(--muted-foreground); font-size: 0.85rem;">{h.contact.confirmation}</p>
+        </form>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

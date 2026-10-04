@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../Nav.astro";
+import GalleryImage from "../GalleryImage.astro";
+import { getContent } from "../../i18n/content";
+import type { Locale } from "../../i18n/locales";
+
+import guideCover from "../../assets/guide-cover.jpg";
+
+type Props = { lang: Locale };
+const { lang } = Astro.props;
+const t = getContent(lang);
+const g = t.guide;
+---
+
+<BaseLayout lang={lang} pageKey="guide" title={g.title} description={g.description}>
+  <Nav lang={lang} pageKey="guide" />
+
+  <main id="main">
+    <header class="page-head">
+      <p class="label-eyebrow">{g.pageHead.eyebrow}</p>
+      <h1>{g.pageHead.title}</h1>
+      <p class="lead">{g.pageHead.lead}</p>
+    </header>
+
+    <section class="container section" style="padding-block-start: 0;">
+      <div class="section-grid">
+        <div class="menu-aside">
+          <GalleryImage src={guideCover} alt={g.coverAlt} gallery="guide" loading="eager" />
+          <p class="label-eyebrow" style="margin-top: 1rem;">{g.coverCaption}</p>
+        </div>
+
+        <div class="course-list" style="list-style: none;">
+          <article class="prose" style="max-width: none;">
+            <p>{g.requestBefore}<a href="mailto:info@casaway.it">info@casaway.it</a>{g.requestAfter}</p>
+
+            <h2>{g.whatsInsideHeading}</h2>
+            <ul style="padding-left: 1.2rem; line-height: 1.75;">
+              {g.whatsInside.map((item) => <li>{item}</li>)}
+            </ul>
+
+            <h2>{g.beforeHeading}</h2>
+            <p>{g.beforeBodyBefore}<a href="https://wa.me/message/R2AKZF4C64OZL1" rel="noreferrer">{g.whatsappText}</a>{g.beforeBodyAfter}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

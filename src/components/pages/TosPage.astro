@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../Nav.astro";
+import { getContent } from "../../i18n/content";
+import { localePath, type Locale } from "../../i18n/locales";
+
+type Props = { lang: Locale };
+const { lang } = Astro.props;
+const t = getContent(lang);
+const x = t.tos;
+---
+
+<BaseLayout lang={lang} pageKey="tos" title={x.title} description={x.description}>
+  <Nav lang={lang} pageKey="tos" />
+
+  <main id="main">
+    <header class="page-head">
+      <p class="label-eyebrow">{x.pageHead.eyebrow}</p>
+      <h1>{x.pageHead.title}</h1>
+      <p class="lead">{x.pageHead.lead}</p>
+    </header>
+
+    <section class="container section" style="padding-block-start: 0;">
+      <article class="prose">
+        <p>{x.pdfLineBefore}</p>
+        <p><a href="/terms.pdf">{x.pdfLink}</a>{x.pdfLineAfter}</p>
+
+        <h2>{x.directHeading}</h2>
+        <p>{x.directBody.replace("contact page", "")}<a href={localePath(lang, "contact")}>{t.nav.contact}</a>.</p>
+
+        <h2>{x.otaHeading}</h2>
+        <p>{x.otaBody}</p>
+
+        <h2>{x.privacyHeading}</h2>
+        <p>{x.privacyBodyBefore}<a href="https://www.smoobu.com/privacy-policy/" rel="noreferrer">{x.privacyPolicyText}</a>{x.privacyBodyAfter}</p>
+      </article>
+    </section>
+  </main>
+</BaseLayout>

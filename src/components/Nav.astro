@@ -1,0 +1,51 @@
+---
+import { getContent } from "../i18n/content";
+import { localePath, type Locale } from "../i18n/locales";
+import { siteConfig } from "../config/site";
+import LocaleSwitcher from "./LocaleSwitcher.astro";
+
+type Props = { lang: Locale; pageKey: string };
+const { lang, pageKey } = Astro.props;
+const t = getContent(lang);
+
+const navItems = [
+  { key: "", label: t.nav.home },
+  { key: "property", label: t.nav.property },
+  { key: "langhe", label: t.nav.langhe },
+  { key: "story", label: t.nav.story },
+  { key: "guide", label: t.nav.guide },
+  { key: "contact", label: t.nav.contact },
+];
+---
+
+<header class="site-header">
+  <div class="nav-grid">
+    <a class="brand" href={localePath(lang, "")} aria-label={`${siteConfig.name} ${t.nav.home}`}>
+      <span>{siteConfig.name.toUpperCase()}</span>
+    </a>
+    <nav class="nav-links" aria-label={t.nav.primaryNav}>
+      {navItems.map((item) => (
+        <a href={localePath(lang, item.key)} aria-current={item.key === pageKey ? "page" : undefined}>
+          {item.label}
+        </a>
+      ))}
+      <LocaleSwitcher lang={lang} pageKey={pageKey} />
+      <a class="button-link button-link--outline" href={localePath(lang, "contact")}>
+        <span class="ember-dot" aria-hidden="true"></span>
+        {t.nav.enquire}
+      </a>
+    </nav>
+    <details class="mobile-nav">
+      <summary class="mobile-nav__toggle">{t.nav.menu}</summary>
+      <nav class="mobile-nav__panel" aria-label={t.nav.mobileNav}>
+        {navItems.map((item) => (
+          <a href={localePath(lang, item.key)} aria-current={item.key === pageKey ? "page" : undefined}>
+            {item.label}
+          </a>
+        ))}
+        <LocaleSwitcher lang={lang} pageKey={pageKey} />
+        <a class="button-link" href={localePath(lang, "contact")}>{t.nav.enquire}</a>
+      </nav>
+    </details>
+  </div>
+</header>

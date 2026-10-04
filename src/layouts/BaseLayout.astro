@@ -1,0 +1,144 @@
+---
+import "../styles.css";
+import SeoHead from "../components/SeoHead.astro";
+import Lightbox from "../components/Lightbox.astro";
+import BottomGallery from "../components/BottomGallery.astro";
+import Footer from "../components/Footer.astro";
+import { getContent } from "../i18n/content";
+import { localeMeta, type Locale } from "../i18n/locales";
+import { siteConfig } from "../config/site";
+
+type Props = {
+  lang: Locale;
+  pageKey: string;
+  title?: string;
+  description?: string;
+  image?: string;
+  structuredData?: Record<string, unknown>;
+  enableReveal?: boolean;
+  hideBottomGallery?: boolean;
+  hideFooter?: boolean;
+};
+
+const {
+  lang,
+  pageKey,
+  title,
+  description,
+  image,
+  structuredData,
+  enableReveal = siteConfig.effects.reveal,
+  hideBottomGallery = false,
+  hideFooter = false,
+} = Astro.props;
+
+const t = getContent(lang);
+const htmlLang = localeMeta[lang].htmlLang;
+---
+
+<!doctype html>
+<html lang={htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#17130f" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <script is:inline>
+      (() => {
+        try {
+          const KEY = "noccVisited";
+          if (localStorage.getItem(KEY)) return;
+          localStorage.setItem(KEY, "1");
+
+          const supported = ["en", "it", "de", "fr", "nl", "es"];
+          const match = /^\/(it|de|fr|nl|es)(?=\/|$)/.exec(location.pathname);
+          const currentLocale = match ? match[1] : "en";
+
+          const nav = (navigator.language || "en").slice(0, 2).toLowerCase();
+          const target = supported.indexOf(nav) !== -1 ? nav : "en";
+          if (target === currentLocale) return;
+
+          const rest = location.pathname.replace(/^\/(it|de|fr|nl|es)(?=\/|$)/, "");
+          const newPath = target === "en" ? (rest || "/") : "/" + target + rest;
+          location.replace(newPath + location.search + location.hash);
+        } catch (e) { /* ignore */ }
+      })();
+    </script>
+    {enableReveal && (
+      <script is:inline>
+        document.documentElement.classList.add("reveal-ready");
+      </script>
+    )}
+    <SeoHead
+      lang={lang}
+      pageKey={pageKey}
+      title={title}
+      description={description}
+      image={image}
+      structuredData={structuredData}
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t.skipToContent}</a>
+    <div class="site-shell">
+      <slot />
+      {!hideBottomGallery && <BottomGallery lang={lang} />}
+      {!hideFooter && <Footer lang={lang} />}
+    </div>
+    <Lightbox />
+    {enableReveal && (
+      <script is:inline>
+        (() => {
+          const header = document.querySelector(".site-header");
+          const updateHeader = () => {
+            header?.classList.toggle("is-scrolled", window.scrollY > 12);
+          };
+
+          updateHeader();
+          window.addEventListener("scroll", updateHeader, { passive: true });
+
+          const elements = Array.from(document.querySelectorAll(".reveal"));
+
+          if (!elements.length) {
+            return;
+          }
+
+          const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+          if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+            elements.forEach((element) => element.classList.add("is-visible"));
+            return;
+          }
+
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                  return;
+                }
+
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              });
+            },
+            {
+              rootMargin: "0px 0px -12% 0px",
+              threshold: 0.12,
+            },
+          );
+
+          elements.forEach((element) => observer.observe(element));
+
+          window.setTimeout(() => {
+            elements.forEach((element) => {
+              if (!element.classList.contains("is-visible")) {
+                element.classList.add("is-visible");
+                observer.unobserve(element);
+              }
+            });
+          }, 1800);
+        })();
+      </script>
+    )}
+  </body>
+</html>

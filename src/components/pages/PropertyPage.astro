@@ -1,0 +1,145 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../Nav.astro";
+import GalleryImage from "../GalleryImage.astro";
+import { getContent } from "../../i18n/content";
+import { localePath, type Locale } from "../../i18n/locales";
+import { siteConfig } from "../../config/site";
+
+import heroPrimary from "../../assets/cover.png";
+import houseAndPatio from "../../assets/house-and-patio.jpg";
+import houseFromStreet from "../../assets/house-from-street.jpg";
+import houseFromNeighbor from "../../assets/house-from-neighbor.jpg";
+import entrance from "../../assets/entrance.jpg";
+import mailbox from "../../assets/mailbox.jpg";
+import patio from "../../assets/patio.jpg";
+import terrace from "../../assets/terrace.jpg";
+import terrace2 from "../../assets/terrace-2.jpg";
+import terrace3 from "../../assets/terrace-3.jpg";
+import gardenView from "../../assets/garden-view.jpg";
+import deck1 from "../../assets/deck-1.jpg";
+import deck3 from "../../assets/deck-3.jpg";
+import livingRoom from "../../assets/living-room.jpg";
+import livingRoom2 from "../../assets/living-room-2.jpg";
+import livingRoom3 from "../../assets/living-room-3.jpg";
+import livingRoom4 from "../../assets/living-room-4.jpg";
+import kitchen from "../../assets/kitchen.jpg";
+import kitchen2 from "../../assets/kitchen-2.jpg";
+import bar from "../../assets/bar.jpg";
+import bar2 from "../../assets/bar-2.jpg";
+import bar3 from "../../assets/bar-3.jpg";
+import bedroom1 from "../../assets/bedroom-1.jpg";
+import bedroom1b from "../../assets/bedroom-1b.jpg";
+import bedroom1c from "../../assets/bedroom-1c.jpg";
+import bedroom1d from "../../assets/bedroom-1d.jpg";
+import bedroom2 from "../../assets/bedroom-2.jpg";
+import bedroom2b from "../../assets/bedroom-2b.jpg";
+import bedroom2c from "../../assets/bedroom-2c.jpg";
+import bedroom2d from "../../assets/bedroom-2d.jpg";
+import bedroomView from "../../assets/bedroom-view.jpg";
+import closet from "../../assets/closet.jpg";
+import bathroom from "../../assets/bathroom.jpg";
+import toilet from "../../assets/toilet.jpg";
+import showerView from "../../assets/shower-view.jpg";
+import laundry from "../../assets/laundry.jpg";
+import staircase1 from "../../assets/staircase-1.jpg";
+import staircase2 from "../../assets/staircase-2.jpg";
+
+type Props = { lang: Locale };
+const { lang } = Astro.props;
+const t = getContent(lang);
+const p = t.property;
+
+const outsideSources = [heroPrimary, houseAndPatio, houseFromStreet, houseFromNeighbor, entrance, mailbox, patio, terrace, terrace2, terrace3, deck1, deck3, gardenView];
+const livingSources = [livingRoom, livingRoom2, livingRoom3, livingRoom4, staircase1, staircase2];
+const kitchenSources = [kitchen, kitchen2, bar, bar2, bar3];
+const bedroomSources = [bedroom1, bedroom1b, bedroom1c, bedroom1d, bedroom2, bedroom2b, bedroom2c, bedroom2d, bedroomView, closet];
+const bathroomSources = [bathroom, showerView, toilet, laundry];
+---
+
+<BaseLayout lang={lang} pageKey="property" title={p.title} description={p.description}>
+  <Nav lang={lang} pageKey="property" />
+
+  <main id="main">
+    <header class="page-head">
+      <p class="label-eyebrow">{p.pageHead.eyebrow}</p>
+      <h1>{p.pageHead.title}</h1>
+      <p class="lead">{p.pageHead.lead}</p>
+    </header>
+
+    <section class="container section" style="padding-block-start: 0;">
+      <div style="margin-bottom: 3rem;">
+        <GalleryImage src={heroPrimary} alt={p.heroAlt} gallery="property" loading="eager" />
+      </div>
+
+      <div class="card-grid">
+        {p.groups.map((group) => (
+          <article class="card">
+            <p class="label-eyebrow">{group.title}</p>
+            <ul>
+              {group.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+
+      <section style="margin-top: 4rem;">
+        <h2 class="display" style="font-size: clamp(1.75rem, 3vw, 2.5rem); margin: 0 0 0.5rem;">{p.sections.outside.title}</h2>
+        <p class="label-eyebrow">{p.sections.outside.subtitle}</p>
+        <div class="gallery">
+          {outsideSources.map((src, i) => (
+            <GalleryImage src={src} alt={p.alts.outside[i]} gallery="property" square />
+          ))}
+        </div>
+      </section>
+
+      <section style="margin-top: 4rem;">
+        <h2 class="display" style="font-size: clamp(1.75rem, 3vw, 2.5rem); margin: 0 0 0.5rem;">{p.sections.livingRoom.title}</h2>
+        <p class="label-eyebrow">{p.sections.livingRoom.subtitle}</p>
+        <div class="gallery">
+          {livingSources.map((src, i) => (
+            <GalleryImage src={src} alt={p.alts.livingRoom[i]} gallery="property" square />
+          ))}
+        </div>
+      </section>
+
+      <section style="margin-top: 4rem;">
+        <h2 class="display" style="font-size: clamp(1.75rem, 3vw, 2.5rem); margin: 0 0 0.5rem;">{p.sections.kitchenBar.title}</h2>
+        <p class="label-eyebrow">{p.sections.kitchenBar.subtitle}</p>
+        <div class="gallery">
+          {kitchenSources.map((src, i) => (
+            <GalleryImage src={src} alt={p.alts.kitchenBar[i]} gallery="property" square />
+          ))}
+        </div>
+      </section>
+
+      <section style="margin-top: 4rem;">
+        <h2 class="display" style="font-size: clamp(1.75rem, 3vw, 2.5rem); margin: 0 0 0.5rem;">{p.sections.bedrooms.title}</h2>
+        <p class="label-eyebrow">{p.sections.bedrooms.subtitle}</p>
+        <div class="gallery">
+          {bedroomSources.map((src, i) => (
+            <GalleryImage src={src} alt={p.alts.bedrooms[i]} gallery="property" square />
+          ))}
+        </div>
+      </section>
+
+      <section style="margin-top: 4rem;">
+        <h2 class="display" style="font-size: clamp(1.75rem, 3vw, 2.5rem); margin: 0 0 0.5rem;">{p.sections.bathrooms.title}</h2>
+        <p class="label-eyebrow">{p.sections.bathrooms.subtitle}</p>
+        <div class="gallery">
+          {bathroomSources.map((src, i) => (
+            <GalleryImage src={src} alt={p.alts.bathrooms[i]} gallery="property" square />
+          ))}
+        </div>
+      </section>
+
+      <div style="margin-top: 4rem;">
+        <p class="label-eyebrow">{p.stayHeading}</p>
+        <p>{p.checkInLabel} {siteConfig.stay.checkIn}. {p.checkOutLabel} {siteConfig.stay.checkOut}.</p>
+        <p style="margin-top: 1.5rem;">
+          <a class="button-link" href={localePath(lang, "contact")}>{p.enquireCta} <span aria-hidden="true">-&gt;</span></a>
+        </p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
