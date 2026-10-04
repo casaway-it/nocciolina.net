@@ -1405,10 +1405,12 @@ textarea {
 
   /* On phones + small tablets, stack the hero: image on top, text block below.
      The natural-aspect image is short and the overlay would otherwise overflow
-     upward behind the nav. */
+     upward behind the nav. Push the whole hero down past the fixed nav so
+     the full house (roof included) is visible. */
   .hero {
     display: flex;
     flex-direction: column;
+    padding-top: calc(2 * 1.15rem + 1.2rem + env(safe-area-inset-top, 0px));
   }
 
   .hero .overlay {
