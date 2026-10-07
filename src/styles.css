@@ -188,14 +188,32 @@ a:hover {
 }
 
 .brand-wordmark {
-  display: block;
-  width: auto;
-  height: clamp(1.5rem, 2.2vw, 1.9rem);
-  /* Dark-brown wordmark becomes cream so it stays legible on the translucent
-     dark nav. Transparency on the PNG is preserved. */
-  filter: brightness(0) invert(1);
+  position: relative;
+  display: inline-block;
+  height: clamp(1.1rem, 1.5vw, 1.4rem);
+  aspect-ratio: 500 / 65;
   opacity: 0.95;
   transition: opacity 180ms ease;
+}
+
+.brand-wordmark__text,
+.brand-wordmark__nut {
+  display: block;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: auto;
+}
+
+.brand-wordmark__text {
+  left: 0;
+  width: 100%;
+  filter: brightness(0) invert(1);
+}
+
+.brand-wordmark__nut {
+  left: 53%;
+  height: 100%;
 }
 
 .brand:hover .brand-wordmark {

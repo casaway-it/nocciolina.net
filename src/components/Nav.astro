@@ -4,7 +4,8 @@ import { getContent } from "../i18n/content";
 import { localePath, type Locale } from "../i18n/locales";
 import { siteConfig } from "../config/site";
 import LocaleSwitcher from "./LocaleSwitcher.astro";
-import brandWordmark from "../assets/brand-wordmark.png";
+import brandWordmarkText from "../assets/brand-wordmark-text.png";
+import brandNut from "../assets/brand-nut.png";
 
 type Props = { lang: Locale; pageKey: string };
 const { lang, pageKey } = Astro.props;
@@ -23,15 +24,26 @@ const navItems = [
 <header class="site-header">
   <div class="nav-grid">
     <a class="brand" href={localePath(lang, "")} aria-label={`${siteConfig.name} - ${t.nav.home}`}>
-      <Image
-        src={brandWordmark}
-        alt={siteConfig.name}
-        width={500}
-        height={65}
-        loading="eager"
-        decoding="sync"
-        class="brand-wordmark"
-      />
+      <span class="brand-wordmark" role="img" aria-label={siteConfig.name}>
+        <Image
+          src={brandWordmarkText}
+          alt=""
+          width={500}
+          height={65}
+          loading="eager"
+          decoding="sync"
+          class="brand-wordmark__text"
+        />
+        <Image
+          src={brandNut}
+          alt=""
+          width={70}
+          height={65}
+          loading="eager"
+          decoding="sync"
+          class="brand-wordmark__nut"
+        />
+      </span>
     </a>
     <nav class="nav-links" aria-label={t.nav.primaryNav}>
       {navItems.map((item) => (
