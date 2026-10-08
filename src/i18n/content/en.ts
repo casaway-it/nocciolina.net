@@ -94,7 +94,7 @@ export const content: Content = {
     ],
     stays: {
       eyebrow: "02 - The house",
-      heading: ["Six guests,", "two bedrooms,", "one spacious garden."],
+      heading: ["The whole house,", "yours alone,", "for your stay."],
       note: "120 sqm indoors, a garden of about 350 sqm with pool in season, pellet stove and electric heating, parking for three cars.",
       caption: "At a glance",
       asideAlt: "Second master bedroom with queen bed and view",

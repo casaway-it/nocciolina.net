@@ -82,7 +82,7 @@ export const content: Content = {
     ],
     stays: {
       eyebrow: "02 - Het huis",
-      heading: ["Zes gasten,", "twee slaapkamers,", "één ruime tuin."],
+      heading: ["Het hele huis,", "alleen voor jullie,", "de hele verblijfsduur."],
       note: "120 m² binnen, een tuin van ongeveer 350 m² met zwembad in het seizoen, pelletkachel en elektrische verwarming, parkeerplaats voor drie auto's.",
       caption: "In één oogopslag",
       asideAlt: "Tweede master-slaapkamer met queensize-bed en uitzicht",
