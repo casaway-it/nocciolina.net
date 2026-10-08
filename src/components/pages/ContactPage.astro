@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../Nav.astro";
 import GalleryImage from "../GalleryImage.astro";
+import GoogleMap from "../GoogleMap.astro";
 import { getContent } from "../../i18n/content";
 import type { Locale } from "../../i18n/locales";
 import { siteConfig } from "../../config/site";
@@ -14,7 +15,6 @@ const t = getContent(lang);
 const c = t.contact;
 
 const mapQuery = `${siteConfig.geo.lat},${siteConfig.geo.lng}`;
-const embedSrc = `https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&z=15&output=embed`;
 const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(mapQuery)}`;
 ---
 
@@ -92,16 +92,5 @@ const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${enc
     </section>
   </main>
 
-  <section class="map-section" aria-label={c.mapTitle}>
-    <p class="label-eyebrow map-eyebrow">{c.mapTitle}</p>
-    <div class="map-frame">
-      <iframe
-        src={embedSrc}
-        title={c.mapTitle}
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen
-      ></iframe>
-    </div>
-  </section>
+  <GoogleMap title={c.mapTitle} eyebrow={c.mapTitle} />
 </BaseLayout>

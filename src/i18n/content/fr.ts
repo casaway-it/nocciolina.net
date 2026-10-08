@@ -82,7 +82,7 @@ export const content: Content = {
     ],
     stays: {
       eyebrow: "02 - La maison",
-      heading: ["Six personnes,", "deux chambres,", "un jardin généreux."],
+      heading: ["La maison entière,", "rien qu'à vous,", "pour tout votre séjour."],
       note: "120 m² à l'intérieur, un jardin d'environ 350 m² avec piscine en saison, chauffage à pellets et électrique, parking pour trois voitures.",
       caption: "En bref",
       asideAlt: "Deuxième chambre parentale avec lit queen size et vue",

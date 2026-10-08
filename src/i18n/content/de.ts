@@ -82,7 +82,7 @@ export const content: Content = {
     ],
     stays: {
       eyebrow: "02 - Das Haus",
-      heading: ["Sechs Gäste,", "zwei Schlafzimmer,", "ein großzügiger Garten."],
+      heading: ["Das ganze Haus,", "nur für Sie,", "Ihren gesamten Aufenthalt."],
       note: "120 m² innen, Garten von etwa 350 m² mit Pool in der Saison, Pelletofen und elektrische Heizung, Parkplätze für drei Fahrzeuge.",
       caption: "Auf einen Blick",
       asideAlt: "Zweites Schlafzimmer mit Queensize-Bett und Aussicht",

@@ -1,0 +1,25 @@
+---
+import { siteConfig } from "../config/site";
+
+type Props = {
+  title: string;
+  eyebrow?: string;
+};
+const { title, eyebrow } = Astro.props;
+
+const { lat, lng, zoom } = siteConfig.mapEmbed;
+const embedSrc = `https://maps.google.com/maps?ll=${lat},${lng}&z=${zoom}&output=embed`;
+---
+
+<section class="map-section" aria-label={title}>
+  {eyebrow && <p class="label-eyebrow map-eyebrow">{eyebrow}</p>}
+  <div class="map-frame">
+    <iframe
+      src={embedSrc}
+      title={title}
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      allowfullscreen
+    ></iframe>
+  </div>
+</section>
