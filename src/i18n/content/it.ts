@@ -13,7 +13,7 @@ export const content: Content = {
     story: "La nostra storia",
     guide: "Guida della casa",
     contact: "Contatti",
-    enquire: "Richiedi",
+    book: "Prenota",
     menu: "Menu",
     primaryNav: "Navigazione principale",
     mobileNav: "Navigazione mobile",
@@ -38,12 +38,16 @@ export const content: Content = {
 
   skipToContent: "Vai al contenuto",
 
+  booking: {
+    cta: "Prenota ora",
+    widgetTitle: "Prenota il soggiorno",
+  },
+
   home: {
     hero: {
       eyebrow: "Alta Langa - Somano, Piemonte",
       title: ["Benvenuti", "nel vostro nido", "nel cuore delle Langhe."],
       body: "Una casa in pietra per sei persone, tra i noccioleti. Giardino, piscina stagionale, stufa a pellet, saletta enoteca e sala giochi con calcio balilla e arcade.",
-      action: "Richiedi informazioni",
       alt: "Nocciolina vista dall'alto - casa in pietra, pergola, piscina e parcheggio",
     },
     marquee: [
@@ -152,26 +156,13 @@ export const content: Content = {
       cta: "Leggi la storia completa",
     },
     contact: {
-      eyebrow: "06 - Scriveteci",
-      heading: ["Scriveteci", "e vi risponderemo", "entro un giorno."],
-      body: "Le richieste dirette sono le più semplici. Diteci le date e la composizione del gruppo - vi torneremo con disponibilità e con la guida della casa.",
-      formTitle: "Richiesta date",
-      confirmation: "Rispondiamo personalmente a ogni messaggio. Se preferite, WhatsApp è più rapido.",
+      eyebrow: "06 - Prenotazioni",
+      heading: ["Scegliete le date", "e prenotate", "direttamente."],
+      body: "Verificate la disponibilità e prenotate direttamente con noi. Prima qualche domanda? Scriveteci su WhatsApp o via email - rispondiamo personalmente a ogni messaggio.",
       directLabel: "Diretti",
       directPhonePrefix: "Telefono",
       directWhatsappPrefix: "WhatsApp",
       emailLabel: "Email",
-      form: {
-        fullName: "Nome completo",
-        email: "Email",
-        phone: "Telefono",
-        arrival: "Arrivo",
-        departure: "Partenza",
-        guests: "Ospiti",
-        message: "Messaggio",
-        messagePlaceholder: "Raccontateci del gruppo e di cosa vorreste fare.",
-        send: "Invia richiesta",
-      },
     },
   },
 
@@ -219,7 +210,6 @@ export const content: Content = {
     stayHeading: "Soggiorno",
     checkInLabel: "Check-in dalle",
     checkOutLabel: "Check-out entro le",
-    enquireCta: "Richiedi date",
     alts: {
       outside: [
         "La casa, la pergola e la piscina dall'alto",
@@ -357,17 +347,6 @@ export const content: Content = {
     mailboxAlt: "La cassetta della posta di Nocciolina all'ingresso",
     labels: { whatsapp: "WhatsApp", whatsappNote: "voce e messaggi", email: "Email", address: "Indirizzo" },
     mapTitle: "Dove trovare Nocciolina",
-    form: {
-      sendMessage: "Inviate un messaggio",
-      name: "Nome",
-      email: "Email",
-      phone: "Telefono",
-      arrival: "Arrivo",
-      departure: "Partenza",
-      message: "Messaggio",
-      messagePlaceholder: "Date, gruppo, domande - tutto ciò che è utile.",
-      send: "Invia",
-    },
   },
 
   tos: {
@@ -382,13 +361,15 @@ export const content: Content = {
     pdfLink: "Termini e Condizioni (PDF)",
     pdfLineAfter: " - ultimo aggiornamento: 06/07/2024.",
     directHeading: "Prenotazioni dirette",
-    directBody:
-      "Le richieste dirette passano da questo sito o dai recapiti nella pagina Contatti. Una volta concordate le date, una caparra conferma la prenotazione; il saldo è richiesto prima dell'arrivo. Tutti i dettagli sono nel PDF.",
+    directBodyBefore:
+      "Le prenotazioni dirette si effettuano online su questo sito. Una caparra conferma la prenotazione; il saldo è richiesto prima dell'arrivo. Per domande prima di prenotare, trovate i nostri recapiti nella pagina ",
+    directContactText: "Contatti",
+    directBodyAfter: ". Tutti i dettagli sono nel PDF.",
     otaHeading: "Prenotazioni OTA",
     otaBody:
       "Se avete prenotato tramite Airbnb, Booking.com, Vrbo o simili, vale la politica di cancellazione del portale. Scriveteci in qualsiasi momento se volete passare a una prenotazione diretta - possiamo di solito offrire condizioni migliori.",
     privacyHeading: "Privacy",
-    privacyBodyBefore: "Il nostro motore di prenotazione è gestito da Smoobu; la loro ",
+    privacyBodyBefore: "Il nostro motore di prenotazione è gestito da Vortex PMS; la loro ",
     privacyPolicyText: "informativa privacy",
     privacyBodyAfter: " copre i dati inviati durante la prenotazione.",
   },

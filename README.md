@@ -11,6 +11,7 @@ Based on the [Ombra](https://github.com/andreialba/ombra) theme by Andrei Alba (
 - Self-hosted Cormorant Garamond + Source Sans 3 via `@fontsource`
 - `sharp` for image optimisation
 - Native lightbox and locale switcher — no runtime JS framework
+- Vortex PMS booking widget (iframe) on Home `#reserve` and `/contact`
 
 ## Local development
 
@@ -28,14 +29,14 @@ Requires Node 22.12 or newer.
 
 | Path | Purpose |
 |---|---|
-| `src/config/site.ts` | Address, phone, WhatsApp, email, stay specs (locale-neutral) |
+| `src/config/site.ts` | Address, phone, WhatsApp, email, stay specs, Vortex booking widget + privacy URLs (locale-neutral) |
 | `src/i18n/locales.ts` | Supported locales (`en`, `it`, `de`, `fr`, `nl`, `es`), helpers |
 | `src/i18n/content/<locale>.ts` | All translated strings for a locale |
 | `src/i18n/pois.ts` | Shared POI directory (names + Google Maps URLs) |
 | `src/components/pages/*.astro` | Shared page components, take a `lang` prop |
 | `src/pages/*.astro` | English routes (`/`, `/property`, `/langhe`, `/story`, `/guide`, `/contact`, `/tos`, `/404`) |
 | `src/pages/[lang]/*.astro` | Non-default locale wrappers via `getStaticPaths` |
-| `src/components/` | Nav, Footer, SeoHead, Lightbox, LocaleSwitcher, BottomGallery, GalleryImage, YouTubeEmbed |
+| `src/components/` | Nav, Footer, SeoHead, Lightbox, LocaleSwitcher, BottomGallery, GalleryImage, YouTubeEmbed, GoogleMap, BookingWidget |
 | `src/layouts/BaseLayout.astro` | HTML shell, metadata, reveal + locale-detection script |
 | `src/styles.css` | All styles — tokens, layout, responsive |
 | `src/assets/` | Images processed by Astro's image service |

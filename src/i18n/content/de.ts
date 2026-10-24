@@ -13,7 +13,7 @@ export const content: Content = {
     story: "Unsere Geschichte",
     guide: "Hausführer",
     contact: "Kontakt",
-    enquire: "Anfragen",
+    book: "Buchen",
     menu: "Menü",
     primaryNav: "Hauptnavigation",
     mobileNav: "Mobile Navigation",
@@ -38,12 +38,16 @@ export const content: Content = {
 
   skipToContent: "Zum Inhalt springen",
 
+  booking: {
+    cta: "Jetzt buchen",
+    widgetTitle: "Aufenthalt buchen",
+  },
+
   home: {
     hero: {
       eyebrow: "Alta Langa - Somano, Piemont",
       title: ["Willkommen", "in Ihrem gemütlichen Nest", "im Herzen der Langhe."],
       body: "Ein Steinhaus für sechs Personen, zwischen Haselnusshainen. Garten, Saisonpool, Pelletofen, Weinstube und Spielzimmer mit Tischkicker und Arcade.",
-      action: "Termin anfragen",
       alt: "Nocciolina von oben - Steinhaus, Pergola, Pool und Parkplatz",
     },
     marquee: [
@@ -140,26 +144,13 @@ export const content: Content = {
       cta: "Die ganze Geschichte lesen",
     },
     contact: {
-      eyebrow: "06 - Bleiben Sie in Kontakt",
-      heading: ["Schreiben Sie uns", "und wir antworten", "innerhalb eines Tages."],
-      body: "Direkte Anfragen sind am einfachsten. Nennen Sie uns die Daten und die Zusammensetzung Ihrer Gruppe - wir melden uns mit Verfügbarkeit und dem Hausführer zurück.",
-      formTitle: "Termin anfragen",
-      confirmation: "Wir beantworten jede Nachricht persönlich. Wenn Sie es vorziehen, geht es per WhatsApp schneller.",
+      eyebrow: "06 - Ihr Aufenthalt",
+      heading: ["Termin wählen", "und direkt", "buchen."],
+      body: "Prüfen Sie die Verfügbarkeit und buchen Sie direkt bei uns. Vorab noch Fragen? Schreiben Sie uns per WhatsApp oder E-Mail - wir beantworten jede Nachricht persönlich.",
       directLabel: "Direkt",
       directPhonePrefix: "Telefon",
       directWhatsappPrefix: "WhatsApp",
       emailLabel: "E-Mail",
-      form: {
-        fullName: "Vor- und Nachname",
-        email: "E-Mail",
-        phone: "Telefon",
-        arrival: "Anreise",
-        departure: "Abreise",
-        guests: "Gäste",
-        message: "Nachricht",
-        messagePlaceholder: "Erzählen Sie uns von Ihrer Gruppe und was Sie unternehmen möchten.",
-        send: "Anfrage senden",
-      },
     },
   },
 
@@ -207,7 +198,6 @@ export const content: Content = {
     stayHeading: "Aufenthalt",
     checkInLabel: "Check-in ab",
     checkOutLabel: "Check-out bis",
-    enquireCta: "Termin anfragen",
     alts: {
       outside: [
         "Haus, Pergola und Pool von oben",
@@ -333,17 +323,6 @@ export const content: Content = {
     mailboxAlt: "Nocciolina-Briefkasten am Eingang",
     labels: { whatsapp: "WhatsApp", whatsappNote: "Anrufe und Nachrichten", email: "E-Mail", address: "Adresse" },
     mapTitle: "So finden Sie Nocciolina",
-    form: {
-      sendMessage: "Nachricht senden",
-      name: "Name",
-      email: "E-Mail",
-      phone: "Telefon",
-      arrival: "Anreise",
-      departure: "Abreise",
-      message: "Nachricht",
-      messagePlaceholder: "Daten, Gruppe, Fragen - was auch immer hilft.",
-      send: "Senden",
-    },
   },
 
   tos: {
@@ -358,13 +337,15 @@ export const content: Content = {
     pdfLink: "Allgemeine Geschäftsbedingungen (PDF)",
     pdfLineAfter: " - letzte Aktualisierung: 06.07.2024.",
     directHeading: "Direktbuchungen",
-    directBody:
-      "Direktanfragen laufen über diese Website oder über die Kontaktdaten auf der Kontaktseite. Sobald die Daten feststehen, bestätigt eine Anzahlung die Buchung; der Restbetrag ist vor der Anreise fällig. Die vollständigen Details stehen in der PDF.",
+    directBodyBefore:
+      "Direktbuchungen erfolgen online über diese Website. Eine Anzahlung bestätigt die Buchung; der Restbetrag ist vor der Anreise fällig. Bei Fragen vor der Buchung finden Sie unsere Kontaktdaten auf der ",
+    directContactText: "Kontaktseite",
+    directBodyAfter: ". Die vollständigen Details stehen in der PDF.",
     otaHeading: "OTA-Buchungen",
     otaBody:
       "Falls Sie über Airbnb, Booking.com, Vrbo oder ähnliche gebucht haben, gilt die Stornierungsrichtlinie des jeweiligen Portals. Schreiben Sie uns jederzeit, wenn Sie zu einer Direktbuchung wechseln möchten - meist können wir bessere Konditionen anbieten.",
     privacyHeading: "Datenschutz",
-    privacyBodyBefore: "Unsere Buchungsmaschine wird von Smoobu betrieben; deren ",
+    privacyBodyBefore: "Unsere Buchungsmaschine wird von Vortex PMS betrieben; deren ",
     privacyPolicyText: "Datenschutzerklärung",
     privacyBodyAfter: " deckt die bei der Buchung übermittelten Daten ab.",
   },

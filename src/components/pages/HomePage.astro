@@ -5,6 +5,7 @@ import Nav from "../Nav.astro";
 import GalleryImage from "../GalleryImage.astro";
 import YouTubeEmbed from "../YouTubeEmbed.astro";
 import GoogleMap from "../GoogleMap.astro";
+import BookingWidget from "../BookingWidget.astro";
 import { getContent } from "../../i18n/content";
 import { localePath, type Locale } from "../../i18n/locales";
 import { siteConfig } from "../../config/site";
@@ -85,7 +86,7 @@ const cardSources = [houseAndPatio, bedroom1, bar];
           <div class="hero-copy reveal reveal-delay-2">
             <p>{h.hero.body}</p>
             <div class="hero-actions">
-              <a class="button-link" href={localePath(lang, "contact")}>{h.hero.action} <span aria-hidden="true">-&gt;</span></a>
+              <a class="button-link" href={localePath(lang, "contact")}>{t.booking.cta} <span aria-hidden="true">-&gt;</span></a>
             </div>
           </div>
         </div>
@@ -303,43 +304,7 @@ const cardSources = [houseAndPatio, bedroom1, bar];
           </div>
         </div>
 
-        <form class="reservation-form reveal" action={siteConfig.contact.formAction} method={siteConfig.contact.method} enctype="text/plain">
-          <p class="label-eyebrow">{h.contact.formTitle}</p>
-          <div class="form-grid">
-            <div class="form-field--full">
-              <label class="label-eyebrow" for="name">{h.contact.form.fullName} <span aria-hidden="true">*</span></label>
-              <input id="name" name="name" autocomplete="name" required />
-            </div>
-            <div>
-              <label class="label-eyebrow" for="email">{h.contact.form.email} <span aria-hidden="true">*</span></label>
-              <input id="email" name="email" type="email" autocomplete="email" required />
-            </div>
-            <div>
-              <label class="label-eyebrow" for="phone">{h.contact.form.phone}</label>
-              <input id="phone" name="phone" type="tel" autocomplete="tel" />
-            </div>
-            <div>
-              <label class="label-eyebrow" for="arrival">{h.contact.form.arrival}</label>
-              <input id="arrival" name="arrival" type="date" />
-            </div>
-            <div>
-              <label class="label-eyebrow" for="departure">{h.contact.form.departure}</label>
-              <input id="departure" name="departure" type="date" />
-            </div>
-            <div class="form-field--full">
-              <label class="label-eyebrow" for="guests">{h.contact.form.guests}</label>
-              <select id="guests" name="guests">
-                {["1", "2", "3", "4", "5", "6"].map((o) => <option value={o}>{o}</option>)}
-              </select>
-            </div>
-            <div class="form-field--full">
-              <label class="label-eyebrow" for="note">{h.contact.form.message}</label>
-              <textarea id="note" name="note" rows="3" placeholder={h.contact.form.messagePlaceholder}></textarea>
-            </div>
-          </div>
-          <button class="form-button" type="submit">{h.contact.form.send} <span aria-hidden="true">-&gt;</span></button>
-          <p style="color: var(--muted-foreground); font-size: 0.85rem;">{h.contact.confirmation}</p>
-        </form>
+        <BookingWidget lang={lang} class="reveal" />
       </div>
     </section>
   </main>

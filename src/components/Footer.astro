@@ -41,7 +41,7 @@ const rights = t.footer.rights.replace("{year}", String(year)).replace("{name}",
       <ul>
         <li><a href={localePath(lang, "guide")}>{t.footer.houseGuide}</a></li>
         <li><a href={localePath(lang, "tos")}>{t.footer.terms}</a></li>
-        <li><a href="https://www.smoobu.com/privacy-policy/" rel="noreferrer">{t.footer.privacy}</a></li>
+        <li><a href={siteConfig.booking.privacyUrl} rel="noreferrer">{t.footer.privacy}</a></li>
       </ul>
     </div>
 

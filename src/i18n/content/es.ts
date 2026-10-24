@@ -13,7 +13,7 @@ export const content: Content = {
     story: "Nuestra historia",
     guide: "Guía de la casa",
     contact: "Contacto",
-    enquire: "Consultar",
+    book: "Reservar",
     menu: "Menú",
     primaryNav: "Navegación principal",
     mobileNav: "Navegación móvil",
@@ -38,12 +38,16 @@ export const content: Content = {
 
   skipToContent: "Ir al contenido",
 
+  booking: {
+    cta: "Reservar ahora",
+    widgetTitle: "Reserva tu estancia",
+  },
+
   home: {
     hero: {
       eyebrow: "Alta Langa - Somano, Piamonte",
       title: ["Bienvenidos a", "vuestro refugio", "en el corazón de las Langhe."],
       body: "Una casa de piedra para seis personas, entre los avellanares. Jardín, piscina de temporada, estufa de pellets, enoteca y sala de juegos con futbolín y arcade.",
-      action: "Consultar fechas",
       alt: "Nocciolina desde el aire - casa de piedra, pérgola, piscina y aparcamiento",
     },
     marquee: [
@@ -140,26 +144,13 @@ export const content: Content = {
       cta: "Leer la historia completa",
     },
     contact: {
-      eyebrow: "06 - Escríbenos",
-      heading: ["Escríbenos", "y responderemos", "en un día."],
-      body: "Las consultas directas son las más sencillas. Dinos las fechas y la composición del grupo - te contestamos con la disponibilidad y la guía de la casa.",
-      formTitle: "Consulta de fechas",
-      confirmation: "Respondemos personalmente a cada mensaje. Si prefieres, WhatsApp es más rápido.",
+      eyebrow: "06 - Reserva tu estancia",
+      heading: ["Elige tus fechas", "y reserva", "directamente."],
+      body: "Consulta la disponibilidad y reserva directamente con nosotros. ¿Alguna pregunta antes? Escríbenos por WhatsApp o por correo - respondemos personalmente a cada mensaje.",
       directLabel: "Directo",
       directPhonePrefix: "Teléfono",
       directWhatsappPrefix: "WhatsApp",
       emailLabel: "Correo",
-      form: {
-        fullName: "Nombre completo",
-        email: "Correo",
-        phone: "Teléfono",
-        arrival: "Llegada",
-        departure: "Salida",
-        guests: "Huéspedes",
-        message: "Mensaje",
-        messagePlaceholder: "Cuéntanos sobre el grupo y lo que os gustaría hacer.",
-        send: "Enviar consulta",
-      },
     },
   },
 
@@ -207,7 +198,6 @@ export const content: Content = {
     stayHeading: "Estancia",
     checkInLabel: "Check-in desde",
     checkOutLabel: "Check-out antes de",
-    enquireCta: "Consultar fechas",
     alts: {
       outside: [
         "La casa, la pérgola y la piscina desde el aire",
@@ -333,17 +323,6 @@ export const content: Content = {
     mailboxAlt: "Buzón de Nocciolina en la entrada",
     labels: { whatsapp: "WhatsApp", whatsappNote: "llamadas y mensajes", email: "Correo", address: "Dirección" },
     mapTitle: "Dónde encontrar Nocciolina",
-    form: {
-      sendMessage: "Enviar un mensaje",
-      name: "Nombre",
-      email: "Correo",
-      phone: "Teléfono",
-      arrival: "Llegada",
-      departure: "Salida",
-      message: "Mensaje",
-      messagePlaceholder: "Fechas, grupo, preguntas - lo que sea útil.",
-      send: "Enviar",
-    },
   },
 
   tos: {
@@ -358,13 +337,15 @@ export const content: Content = {
     pdfLink: "Términos y Condiciones (PDF)",
     pdfLineAfter: " - última actualización: 06/07/2024.",
     directHeading: "Reservas directas",
-    directBody:
-      "Las consultas directas pasan por esta web o por los contactos de la página de Contacto. Una vez acordadas las fechas, un depósito confirma la reserva; el saldo se abona antes de la llegada. Los detalles completos están en el PDF.",
+    directBodyBefore:
+      "Las reservas directas se hacen online a través de esta web. Un depósito confirma la reserva; el saldo se abona antes de la llegada. Si tienes preguntas antes de reservar, encontrarás nuestros datos en la página de ",
+    directContactText: "Contacto",
+    directBodyAfter: ". Los detalles completos están en el PDF.",
     otaHeading: "Reservas OTA",
     otaBody:
       "Si has reservado a través de Airbnb, Booking.com, Vrbo o similares, se aplica la política de cancelación del portal. Escríbenos cuando quieras si deseas cambiar a una reserva directa - solemos poder ofrecer mejores condiciones.",
     privacyHeading: "Privacidad",
-    privacyBodyBefore: "Nuestro motor de reservas lo gestiona Smoobu; su ",
+    privacyBodyBefore: "Nuestro motor de reservas lo gestiona Vortex PMS; su ",
     privacyPolicyText: "política de privacidad",
     privacyBodyAfter: " cubre los datos facilitados durante la reserva.",
   },

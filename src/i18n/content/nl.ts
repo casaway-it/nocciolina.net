@@ -13,7 +13,7 @@ export const content: Content = {
     story: "Ons verhaal",
     guide: "Huisgids",
     contact: "Contact",
-    enquire: "Aanvragen",
+    book: "Nu boeken",
     menu: "Menu",
     primaryNav: "Hoofdnavigatie",
     mobileNav: "Mobiele navigatie",
@@ -38,12 +38,16 @@ export const content: Content = {
 
   skipToContent: "Ga naar inhoud",
 
+  booking: {
+    cta: "Nu boeken",
+    widgetTitle: "Boek uw verblijf",
+  },
+
   home: {
     hero: {
       eyebrow: "Alta Langa - Somano, Piëmont",
       title: ["Welkom", "in uw gezellige nest", "in het hart van de Langhe."],
       body: "Een stenen huis voor zes personen, tussen de hazelaarbossen. Tuin, seizoenszwembad, pelletkachel, wijnkamer en speelkamer met tafelvoetbal en arcadekast.",
-      action: "Vraag data aan",
       alt: "Nocciolina van bovenaf - stenen huis, pergola, zwembad en parkeerplaats",
     },
     marquee: [
@@ -140,26 +144,13 @@ export const content: Content = {
       cta: "Lees het hele verhaal",
     },
     contact: {
-      eyebrow: "06 - Blijf in contact",
-      heading: ["Schrijf ons", "en we antwoorden", "binnen een dag."],
-      body: "Directe aanvragen zijn het eenvoudigst. Vertel ons de data en de samenstelling van uw groep - we komen terug met beschikbaarheid en de huisgids.",
-      formTitle: "Vraag data aan",
-      confirmation: "We beantwoorden elk bericht persoonlijk. Via WhatsApp gaat het sneller.",
+      eyebrow: "06 - Boek uw verblijf",
+      heading: ["Kies uw data", "en boek", "direct."],
+      body: "Bekijk de beschikbaarheid en boek rechtstreeks bij ons. Eerst nog vragen? Stuur ons een bericht via WhatsApp of e-mail - we beantwoorden elk bericht persoonlijk.",
       directLabel: "Direct",
       directPhonePrefix: "Telefoon",
       directWhatsappPrefix: "WhatsApp",
       emailLabel: "E-mail",
-      form: {
-        fullName: "Volledige naam",
-        email: "E-mail",
-        phone: "Telefoon",
-        arrival: "Aankomst",
-        departure: "Vertrek",
-        guests: "Gasten",
-        message: "Bericht",
-        messagePlaceholder: "Vertel ons over de groep en wat u zou willen doen.",
-        send: "Aanvraag versturen",
-      },
     },
   },
 
@@ -207,7 +198,6 @@ export const content: Content = {
     stayHeading: "Verblijf",
     checkInLabel: "Check-in vanaf",
     checkOutLabel: "Check-out voor",
-    enquireCta: "Vraag data aan",
     alts: {
       outside: [
         "Het huis, de pergola en het zwembad van bovenaf",
@@ -333,17 +323,6 @@ export const content: Content = {
     mailboxAlt: "Nocciolina-brievenbus bij de ingang",
     labels: { whatsapp: "WhatsApp", whatsappNote: "gesprekken en berichten", email: "E-mail", address: "Adres" },
     mapTitle: "Zo vindt u Nocciolina",
-    form: {
-      sendMessage: "Stuur een bericht",
-      name: "Naam",
-      email: "E-mail",
-      phone: "Telefoon",
-      arrival: "Aankomst",
-      departure: "Vertrek",
-      message: "Bericht",
-      messagePlaceholder: "Data, groep, vragen - alles wat nuttig is.",
-      send: "Versturen",
-    },
   },
 
   tos: {
@@ -358,13 +337,15 @@ export const content: Content = {
     pdfLink: "Algemene Voorwaarden (PDF)",
     pdfLineAfter: " - laatste update: 06-07-2024.",
     directHeading: "Directe boekingen",
-    directBody:
-      "Directe aanvragen lopen via deze site of via de contactgegevens op de contactpagina. Zodra de data vaststaan, bevestigt een aanbetaling de boeking; het saldo is verschuldigd vóór aankomst. Alle details staan in de PDF.",
+    directBodyBefore:
+      "Directe boekingen verlopen online via deze site. Een aanbetaling bevestigt de boeking; het saldo is verschuldigd vóór aankomst. Voor vragen vóór het boeken vindt u onze gegevens op de ",
+    directContactText: "contactpagina",
+    directBodyAfter: ". Alle details staan in de PDF.",
     otaHeading: "OTA-boekingen",
     otaBody:
       "Als u via Airbnb, Booking.com, Vrbo of soortgelijke hebt geboekt, geldt het annuleringsbeleid van dat portaal. Neem gerust contact met ons op als u wilt overstappen naar een directe boeking - we kunnen meestal betere voorwaarden bieden.",
     privacyHeading: "Privacy",
-    privacyBodyBefore: "Onze boekingsmotor wordt beheerd door Smoobu; hun ",
+    privacyBodyBefore: "Onze boekingsmotor wordt beheerd door Vortex PMS; hun ",
     privacyPolicyText: "privacybeleid",
     privacyBodyAfter: " dekt de tijdens de boeking verstrekte gegevens.",
   },

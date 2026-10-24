@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../Nav.astro";
 import GalleryImage from "../GalleryImage.astro";
 import GoogleMap from "../GoogleMap.astro";
+import BookingWidget from "../BookingWidget.astro";
 import { getContent } from "../../i18n/content";
 import type { Locale } from "../../i18n/locales";
 import { siteConfig } from "../../config/site";
@@ -58,36 +59,7 @@ const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${enc
           </div>
         </aside>
 
-        <form class="reservation-form" action={siteConfig.contact.formAction} method={siteConfig.contact.method} enctype="text/plain">
-          <p class="label-eyebrow">{c.form.sendMessage}</p>
-          <div class="form-grid">
-            <div class="form-field--full">
-              <label class="label-eyebrow" for="name">{c.form.name} <span aria-hidden="true">*</span></label>
-              <input id="name" name="name" autocomplete="name" required />
-            </div>
-            <div>
-              <label class="label-eyebrow" for="email">{c.form.email} <span aria-hidden="true">*</span></label>
-              <input id="email" name="email" type="email" autocomplete="email" required />
-            </div>
-            <div>
-              <label class="label-eyebrow" for="phone">{c.form.phone}</label>
-              <input id="phone" name="phone" type="tel" autocomplete="tel" />
-            </div>
-            <div>
-              <label class="label-eyebrow" for="arrival">{c.form.arrival}</label>
-              <input id="arrival" name="arrival" type="date" />
-            </div>
-            <div>
-              <label class="label-eyebrow" for="departure">{c.form.departure}</label>
-              <input id="departure" name="departure" type="date" />
-            </div>
-            <div class="form-field--full">
-              <label class="label-eyebrow" for="message">{c.form.message}</label>
-              <textarea id="message" name="message" rows="5" required placeholder={c.form.messagePlaceholder}></textarea>
-            </div>
-          </div>
-          <button class="form-button" type="submit">{c.form.send} <span aria-hidden="true">-&gt;</span></button>
-        </form>
+        <BookingWidget lang={lang} />
       </div>
     </section>
   </main>

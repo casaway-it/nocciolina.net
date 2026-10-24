@@ -13,7 +13,7 @@ export const content: Content = {
     story: "Story",
     guide: "House Guide",
     contact: "Contact",
-    enquire: "Enquire",
+    book: "Book now",
     menu: "Menu",
     primaryNav: "Primary navigation",
     mobileNav: "Mobile navigation",
@@ -38,12 +38,16 @@ export const content: Content = {
 
   skipToContent: "Skip to content",
 
+  booking: {
+    cta: "Book now",
+    widgetTitle: "Book your stay",
+  },
+
   home: {
     hero: {
       eyebrow: "Alta Langa - Somano, Piemonte",
       title: ["Welcome to", "your comfy nest", "in the heart of Langhe."],
       body: "A stone house for six, among the hazelnut groves. Garden, seasonal pool, pellet stove, wine-bar room, and a game room with foosball and arcade.",
-      action: "Enquire about dates",
       alt: "Nocciolina from above - stone house, pergola, pool and parking",
     },
     marquee: [
@@ -152,26 +156,13 @@ export const content: Content = {
       cta: "Read the full story",
     },
     contact: {
-      eyebrow: "06 - Stay in touch",
-      heading: ["Write to us", "and we'll answer", "within a day."],
-      body: "Direct enquiries are the easiest. Tell us the dates and the shape of your group - we'll come back with availability and the house guide.",
-      formTitle: "Enquire about dates",
-      confirmation: "We answer every message personally. If you prefer, WhatsApp is faster.",
+      eyebrow: "06 - Book your stay",
+      heading: ["Pick your dates", "and book", "direct."],
+      body: "Check availability and book directly with us. Questions first? Reach us on WhatsApp or by email - we answer every message personally.",
       directLabel: "Direct",
       directPhonePrefix: "Phone",
       directWhatsappPrefix: "WhatsApp",
       emailLabel: "Email",
-      form: {
-        fullName: "Full name",
-        email: "Email",
-        phone: "Phone",
-        arrival: "Arrival",
-        departure: "Departure",
-        guests: "Guests",
-        message: "Message",
-        messagePlaceholder: "Tell us about your group and what you'd like to do.",
-        send: "Send enquiry",
-      },
     },
   },
 
@@ -219,7 +210,6 @@ export const content: Content = {
     stayHeading: "Stay",
     checkInLabel: "Check-in from",
     checkOutLabel: "Check-out by",
-    enquireCta: "Enquire about dates",
     alts: {
       outside: [
         "The house, pergola and pool from above",
@@ -357,17 +347,6 @@ export const content: Content = {
     mailboxAlt: "Nocciolina mailbox at the entrance",
     labels: { whatsapp: "WhatsApp", whatsappNote: "voice and messages", email: "Email", address: "Address" },
     mapTitle: "Where to find Nocciolina",
-    form: {
-      sendMessage: "Send a message",
-      name: "Name",
-      email: "Email",
-      phone: "Phone",
-      arrival: "Arrival",
-      departure: "Departure",
-      message: "Message",
-      messagePlaceholder: "Dates, group, questions - whatever's useful.",
-      send: "Send",
-    },
   },
 
   tos: {
@@ -382,13 +361,15 @@ export const content: Content = {
     pdfLink: "Terms and Conditions (PDF)",
     pdfLineAfter: " - last update: 2024-07-06.",
     directHeading: "Direct bookings",
-    directBody:
-      "Direct enquiries go through this website or via the contact details on the contact page. Once we agree on dates, a deposit confirms the booking; the balance is due before arrival. Full details are in the PDF.",
+    directBodyBefore:
+      "Direct bookings are made online through this website. A deposit confirms the booking; the balance is due before arrival. For questions before you book, use the details on the ",
+    directContactText: "contact page",
+    directBodyAfter: ". Full details are in the PDF.",
     otaHeading: "OTA bookings",
     otaBody:
       "If you booked through Airbnb, Booking.com, Vrbo or similar, that portal's cancellation policy applies to your stay. Reach out any time if you'd like to switch to a direct booking - we can usually offer better conditions.",
     privacyHeading: "Privacy",
-    privacyBodyBefore: "Our booking engine is operated by Smoobu; their ",
+    privacyBodyBefore: "Our booking engine is operated by Vortex PMS; their ",
     privacyPolicyText: "privacy policy",
     privacyBodyAfter: " covers data submitted during the booking flow.",
   },
