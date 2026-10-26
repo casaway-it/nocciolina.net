@@ -346,8 +346,7 @@ a:hover {
   margin-top: 0.25rem;
 }
 
-.button-link,
-.form-button {
+.button-link {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
@@ -366,8 +365,7 @@ a:hover {
     transform 180ms ease;
 }
 
-.button-link:hover,
-.form-button:hover {
+.button-link:hover {
   background: var(--ember);
   color: var(--ember-foreground);
 }
@@ -821,7 +819,7 @@ a:hover {
   margin-top: 2rem;
 }
 
-.reservation-form {
+.booking-card {
   grid-column: 7 / span 6;
   border: 1px solid rgb(117 97 76 / 0.7);
   background: rgb(23 19 15 / 0.64);
@@ -829,47 +827,9 @@ a:hover {
   padding: clamp(2rem, 5vw, 3rem);
 }
 
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.form-field--full {
-  grid-column: span 2;
-}
-
-label {
+.booking-card iframe {
   display: block;
-}
-
-input,
-select,
-textarea {
-  width: 100%;
-  border: 0;
-  border-bottom: 1px solid var(--border);
-  border-radius: 0;
-  background: transparent;
-  color: var(--foreground);
-  margin-top: 0.55rem;
-  padding: 0.65rem 0 0.6rem;
-  line-height: 1.35;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  border-bottom-color: var(--focus);
-}
-
-select option {
-  background: var(--background);
-}
-
-textarea {
-  resize: vertical;
+  margin-top: 2rem;
 }
 
 .page-head {
@@ -1423,7 +1383,7 @@ textarea {
   .chef-media,
   .chef-bio,
   .reservation-copy,
-  .reservation-form {
+  .booking-card {
     grid-column: 1 / -1;
   }
 
@@ -1509,13 +1469,8 @@ textarea {
 }
 
 @media (max-width: 640px) {
-  .form-grid,
   .reservation-facts {
     grid-template-columns: 1fr;
-  }
-
-  .form-field--full {
-    grid-column: span 1;
   }
 
   .timeline li {

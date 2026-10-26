@@ -41,9 +41,11 @@ export const siteConfig = {
     { label: "House Guide", href: "/guide" },
     { label: "Contact", href: "/contact" },
   ],
-  contact: {
-    formAction: "mailto:info@casaway.it",
-    method: "post",
+  // Vortex PMS booking widget, embedded on Home (#reserve) and /contact.
+  // Messages from the widget's origin carry its content height for auto-resize.
+  booking: {
+    widgetUrl: "https://app.vortexpms.com/widget/nocciolina",
+    privacyUrl: "https://vortexpms.com/privacy",
   },
   stay: {
     guests: 6,

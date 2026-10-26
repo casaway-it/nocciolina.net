@@ -1,0 +1,41 @@
+---
+// Booking card shared by Home (#reserve) and /contact: the Vortex PMS widget.
+// The widget posts { vortexWidgetHeight } from its own origin; the listener
+// sizes the iframe to fit its content.
+import { getContent } from "../i18n/content";
+import type { Locale } from "../i18n/locales";
+import { siteConfig } from "../config/site";
+
+interface Props {
+  lang: Locale;
+  class?: string;
+}
+
+const { lang, class: className } = Astro.props;
+const t = getContent(lang);
+const { widgetUrl } = siteConfig.booking;
+const widgetOrigin = new URL(widgetUrl).origin;
+---
+
+<div class:list={["booking-card", className]}>
+  <p class="label-eyebrow">{t.booking.cta}</p>
+  <iframe
+    src={widgetUrl}
+    title={t.booking.widgetTitle}
+    width="100%"
+    height="340"
+    style="border: 0; max-width: 480px;"
+    allow="clipboard-write"
+    loading="lazy"
+    data-booking-widget
+  ></iframe>
+</div>
+
+<script is:inline define:vars={{ widgetOrigin }}>
+  window.addEventListener("message", (e) => {
+    if (e.origin !== widgetOrigin || typeof e.data?.vortexWidgetHeight !== "number") return;
+    document.querySelectorAll("iframe[data-booking-widget]").forEach((frame) => {
+      frame.style.height = `${e.data.vortexWidgetHeight}px`;
+    });
+  });
+</script>

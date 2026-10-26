@@ -13,7 +13,7 @@ export const content: Content = {
     story: "Notre histoire",
     guide: "Guide maison",
     contact: "Contact",
-    enquire: "Demander",
+    book: "Réserver",
     menu: "Menu",
     primaryNav: "Navigation principale",
     mobileNav: "Navigation mobile",
@@ -38,12 +38,16 @@ export const content: Content = {
 
   skipToContent: "Aller au contenu",
 
+  booking: {
+    cta: "Réserver maintenant",
+    widgetTitle: "Réserver votre séjour",
+  },
+
   home: {
     hero: {
       eyebrow: "Alta Langa - Somano, Piémont",
       title: ["Bienvenue dans", "votre nid douillet", "au cœur des Langhe."],
       body: "Une maison en pierre pour six personnes, parmi les noisetaies. Jardin, piscine saisonnière, poêle à pellets, salle d'enoteca et salle de jeux avec baby-foot et arcade.",
-      action: "Demander les dates",
       alt: "Nocciolina vue du ciel - maison en pierre, pergola, piscine et parking",
     },
     marquee: [
@@ -140,26 +144,13 @@ export const content: Content = {
       cta: "Lire l'histoire complète",
     },
     contact: {
-      eyebrow: "06 - Restez en contact",
-      heading: ["Écrivez-nous", "et nous répondrons", "dans la journée."],
-      body: "Les demandes directes sont les plus simples. Dites-nous les dates et la composition de votre groupe - nous reviendrons avec les disponibilités et le guide maison.",
-      formTitle: "Demande de dates",
-      confirmation: "Nous répondons personnellement à chaque message. Si vous préférez, WhatsApp est plus rapide.",
+      eyebrow: "06 - Réservez votre séjour",
+      heading: ["Choisissez vos dates", "et réservez", "en direct."],
+      body: "Consultez les disponibilités et réservez directement auprès de nous. Une question avant ? Écrivez-nous sur WhatsApp ou par e-mail - nous répondons personnellement à chaque message.",
       directLabel: "Direct",
       directPhonePrefix: "Téléphone",
       directWhatsappPrefix: "WhatsApp",
       emailLabel: "E-mail",
-      form: {
-        fullName: "Nom complet",
-        email: "E-mail",
-        phone: "Téléphone",
-        arrival: "Arrivée",
-        departure: "Départ",
-        guests: "Personnes",
-        message: "Message",
-        messagePlaceholder: "Parlez-nous de votre groupe et de ce que vous aimeriez faire.",
-        send: "Envoyer la demande",
-      },
     },
   },
 
@@ -207,7 +198,6 @@ export const content: Content = {
     stayHeading: "Séjour",
     checkInLabel: "Check-in à partir de",
     checkOutLabel: "Check-out avant",
-    enquireCta: "Demander les dates",
     alts: {
       outside: [
         "La maison, la pergola et la piscine vues du ciel",
@@ -333,17 +323,6 @@ export const content: Content = {
     mailboxAlt: "Boîte aux lettres Nocciolina à l'entrée",
     labels: { whatsapp: "WhatsApp", whatsappNote: "appels et messages", email: "E-mail", address: "Adresse" },
     mapTitle: "Où trouver Nocciolina",
-    form: {
-      sendMessage: "Envoyer un message",
-      name: "Nom",
-      email: "E-mail",
-      phone: "Téléphone",
-      arrival: "Arrivée",
-      departure: "Départ",
-      message: "Message",
-      messagePlaceholder: "Dates, groupe, questions - tout ce qui est utile.",
-      send: "Envoyer",
-    },
   },
 
   tos: {
@@ -358,13 +337,15 @@ export const content: Content = {
     pdfLink: "Conditions Générales (PDF)",
     pdfLineAfter: " - dernière mise à jour : 06/07/2024.",
     directHeading: "Réservations directes",
-    directBody:
-      "Les demandes directes passent par ce site ou par les contacts de la page Contact. Une fois les dates convenues, un acompte confirme la réservation ; le solde est dû avant l'arrivée. Les détails figurent dans le PDF.",
+    directBodyBefore:
+      "Les réservations directes se font en ligne sur ce site. Un acompte confirme la réservation ; le solde est dû avant l'arrivée. Pour toute question avant de réserver, nos coordonnées figurent sur la page ",
+    directContactText: "Contact",
+    directBodyAfter: ". Les détails figurent dans le PDF.",
     otaHeading: "Réservations OTA",
     otaBody:
       "Si vous avez réservé via Airbnb, Booking.com, Vrbo ou similaire, la politique d'annulation du portail s'applique. Écrivez-nous à tout moment si vous souhaitez passer à une réservation directe - nous pouvons souvent proposer de meilleures conditions.",
     privacyHeading: "Confidentialité",
-    privacyBodyBefore: "Notre moteur de réservation est opéré par Smoobu ; leur ",
+    privacyBodyBefore: "Notre moteur de réservation est opéré par Vortex PMS ; leur ",
     privacyPolicyText: "politique de confidentialité",
     privacyBodyAfter: " couvre les données transmises lors de la réservation.",
   },

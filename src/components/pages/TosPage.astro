@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../Nav.astro";
 import { getContent } from "../../i18n/content";
 import { localePath, assetPath, type Locale } from "../../i18n/locales";
+import { siteConfig } from "../../config/site";
 
 type Props = { lang: Locale };
 const { lang } = Astro.props;
@@ -26,13 +27,13 @@ const x = t.tos;
         <p><a href={assetPath("/terms.pdf")}>{x.pdfLink}</a>{x.pdfLineAfter}</p>
 
         <h2>{x.directHeading}</h2>
-        <p>{x.directBody.replace("contact page", "")}<a href={localePath(lang, "contact")}>{t.nav.contact}</a>.</p>
+        <p>{x.directBodyBefore}<a href={localePath(lang, "contact")}>{x.directContactText}</a>{x.directBodyAfter}</p>
 
         <h2>{x.otaHeading}</h2>
         <p>{x.otaBody}</p>
 
         <h2>{x.privacyHeading}</h2>
-        <p>{x.privacyBodyBefore}<a href="https://www.smoobu.com/privacy-policy/" rel="noreferrer">{x.privacyPolicyText}</a>{x.privacyBodyAfter}</p>
+        <p>{x.privacyBodyBefore}<a href={siteConfig.booking.privacyUrl} rel="noreferrer">{x.privacyPolicyText}</a>{x.privacyBodyAfter}</p>
       </article>
     </section>
   </main>

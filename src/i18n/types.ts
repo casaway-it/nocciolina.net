@@ -10,7 +10,7 @@ export type Content = {
     story: string;
     guide: string;
     contact: string;
-    enquire: string;
+    book: string; // short: shares the desktop nav row with six links
     menu: string;
     primaryNav: string;
     mobileNav: string;
@@ -35,12 +35,17 @@ export type Content = {
 
   skipToContent: string;
 
+  // Booking card label (Home #reserve, /contact) and the hero/Property "Book now" CTAs.
+  booking: {
+    cta: string;
+    widgetTitle: string; // iframe title for screen readers
+  };
+
   home: {
     hero: {
       eyebrow: string;
       title: [string, string, string];
       body: string;
-      action: string;
       alt: string;
     };
     marquee: string[];
@@ -98,23 +103,10 @@ export type Content = {
       eyebrow: string;
       heading: [string, string, string];
       body: string;
-      formTitle: string;
-      confirmation: string;
       directLabel: string;
       directPhonePrefix: string;
       directWhatsappPrefix: string;
       emailLabel: string;
-      form: {
-        fullName: string;
-        email: string;
-        phone: string;
-        arrival: string;
-        departure: string;
-        guests: string;
-        message: string;
-        messagePlaceholder: string;
-        send: string;
-      };
     };
   };
 
@@ -143,7 +135,6 @@ export type Content = {
     stayHeading: string;
     checkInLabel: string; // "Check-in from"
     checkOutLabel: string; // "Check-out by"
-    enquireCta: string;
     alts: {
       outside: string[];
       livingRoom: string[];
@@ -216,17 +207,6 @@ export type Content = {
       address: string;
     };
     mapTitle: string;
-    form: {
-      sendMessage: string;
-      name: string;
-      email: string;
-      phone: string;
-      arrival: string;
-      departure: string;
-      message: string;
-      messagePlaceholder: string;
-      send: string;
-    };
   };
 
   tos: {
@@ -241,7 +221,9 @@ export type Content = {
     pdfLink: string;
     pdfLineAfter: string;
     directHeading: string;
-    directBody: string;
+    directBodyBefore: string;
+    directContactText: string; // link to the contact page
+    directBodyAfter: string;
     otaHeading: string;
     otaBody: string;
     privacyHeading: string;
